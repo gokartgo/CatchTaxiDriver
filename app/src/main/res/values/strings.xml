@@ -1,0 +1,21 @@
+<resources>
+    <!-- activity sign in sign up -->
+    <string name="sign_in">sign in</string>
+    <string name="sign_up">sign up</string>
+
+    <!-- fragment sign in sign up -->
+    <string name="sign_in_sign_up_head_line_1">EARN. CONNECT.\nCONTRIBUTE TO SOCIETY</string>
+    <string name="sign_in_sign_up_title_1">Partner with us to drive your own\nlivelihood and more</string>
+    <string name="sign_in_sign_up_head_line_2">EARN MORE\n</string>
+    <string name="sign_in_sign_up_title_2">With more passengers on Grab, the\nopportunities to earn are endless\n</string>
+    <string name="sign_in_sign_up_head_line_3">SAFETY\n</string>
+    <string name="sign_in_sign_up_title_3">Be your own boss by accepting more jobs\nthrough our secure network\n</string>
+    <string name="sign_in_sign_up_head_line_4">COMMUNITY\n</string>
+    <string name="sign_in_sign_up_title_4">Be part of Southeast Asis\'s largest\ntransport network\n</string>
+
+    <!-- application -->
+    <string name="app_name">CatchTaxiDriver</string>
+    <string name="title_activity_maps">CatchDriver</string>
+    <string name="open_drawer">Open Menu</string>
+    <string name="close_drawer">Close Menu</string>
+</resources>
