@@ -13,9 +13,24 @@
     <string name="sign_in_sign_up_head_line_4">COMMUNITY\n</string>
     <string name="sign_in_sign_up_title_4">Be part of Southeast Asis\'s largest\ntransport network\n</string>
 
+    <!-- menu drawerlayout mainactivity -->
+    <string name="menu_1">History</string>
+    <string name="menu_2">Grabpay Wallet</string>
+    <string name="menu_3">Incentives</string>
+    <string name="menu_4">Driver\'s Blog</string>
+    <string name="menu_5">PDRM</string>
+    <string name="menu_6">Support</string>
+    <string name="menu_7">Diagnostics</string>
+
     <!-- application -->
     <string name="app_name">CatchTaxiDriver</string>
     <string name="title_activity_maps">CatchDriver</string>
     <string name="open_drawer">Open Menu</string>
     <string name="close_drawer">Close Menu</string>
+    <string name="sign_in_device">Sign in with Device</string>
+    <string name="sign_in_google">Sign in with Google</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up_don_t_have_an_account">Sign Up</string>
+    <string name="welcome_back_sign_in">Welcome back!</string>
+    <string name="sign_in_now_sign_in">Sign in now</string>
 </resources>

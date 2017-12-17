@@ -4,4 +4,15 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="main_grab_color">#00b140</color>
+    <color name="not_use_color">#00000000</color>
+    <color name="switch_off">#757575</color>
+    <color name="switch_on">#00b140</color>
+    <color name="drawer_menu">#ff31415a</color>
+    <color name="drawer_menu_background">#222222</color>
+
+    <!-- Theme Dark -->
+    <color name="colorPrimaryThemeDark">#333333</color>
+    <color name="disable_forground_grey">#42221f1f</color>
+    <color name="disable_thumb_grey">#1c000000</color>
+    <color name="colorAccentThemeDark">#46bdbf</color>
 </resources>

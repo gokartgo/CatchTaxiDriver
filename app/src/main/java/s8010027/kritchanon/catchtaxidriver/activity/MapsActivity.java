@@ -1,4 +1,4 @@
-package s8010027.kritchanon.catchtaxidriver.activity.notuse;
+package s8010027.kritchanon.catchtaxidriver.activity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -30,6 +30,8 @@ import java.io.IOException;
 import java.util.List;
 
 import s8010027.kritchanon.catchtaxidriver.R;
+import s8010027.kritchanon.catchtaxidriver.fragment.MainFragment;
+import s8010027.kritchanon.catchtaxidriver.fragment.SignInFragment;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         , GoogleApiClient.ConnectionCallbacks
@@ -50,6 +52,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        if(savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.contentContainer, MainFragment.newInstance(),"MainFragment")
+                    .commit();
+        }
 
         // request permission from user
         if (ContextCompat.checkSelfPermission(this,
