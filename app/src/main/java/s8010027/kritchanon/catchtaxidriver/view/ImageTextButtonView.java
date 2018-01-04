@@ -107,6 +107,10 @@ public class ImageTextButtonView extends BaseCustomViewGroup {
         tvImageTextButton.setText(text);
     }
 
+    public void setTvResourceImageTextButton(int text){
+        tvImageTextButton.setText(getResources().getString(text));
+    }
+
     public void setColorTvImageTextButton(int color){
         tvImageTextButton.setTextColor(color);
     }

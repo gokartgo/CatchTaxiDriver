@@ -13,14 +13,41 @@
     <string name="sign_in_sign_up_head_line_4">COMMUNITY\n</string>
     <string name="sign_in_sign_up_title_4">Be part of Southeast Asis\'s largest\ntransport network\n</string>
 
+    <!-- fragment sign up -->
+    <string name="register">Register</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_surname">Your Surname</string>
+    <string name="your_email">E-mail Address</string>
+    <string name="email_address">Email Address</string>
+    <string name="sign_up_id">Taxi ID</string>
+    <string name="mobile">Mobile</string>
+    <string name="mobile_number">0800000000</string>
+    <string name="username_register">Username</string>
+    <string name="password_register">Password</string>
+    <string name="re_password_register">Re-Password</string>
+    <string name="register_button">Register</string>
+    <string name="ok_button">Sign Up</string>
+    <string name="your_sex_register">sex</string>
+    <string name="head_sign_up_id">Taxi ID</string>
+    <string name="head_e_mail">E-mail</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+
     <!-- menu drawerlayout mainactivity -->
     <string name="menu_1">History</string>
-    <string name="menu_2">Grabpay Wallet</string>
-    <string name="menu_3">Incentives</string>
-    <string name="menu_4">Driver\'s Blog</string>
-    <string name="menu_5">PDRM</string>
-    <string name="menu_6">Support</string>
-    <string name="menu_7">Diagnostics</string>
+    <string name="menu_2">Catch Wallet</string>
+    <string name="menu_3">Catch Reward</string>
+    <string name="menu_4">Check</string>
+    <string name="menu_5">Settings</string>
+    <string name="menu_6">Call Center</string>
+    <string name="menu_7">Block</string>
+
+    <!-- name actionbar -->
+    <string name="history_actionbar">Job History</string>
+    <string name="wallet_actionbar">Wallet</string>
+    <string name="settings_actionbar">Settings</string>
+    <string name="profile_actionbar">Profile</string>
+    <string name="block_actionbar">Block Customer</string>
 
     <!-- application -->
     <string name="app_name">CatchTaxiDriver</string>
@@ -33,4 +60,89 @@
     <string name="sign_up_don_t_have_an_account">Sign Up</string>
     <string name="welcome_back_sign_in">Welcome back!</string>
     <string name="sign_in_now_sign_in">Sign in now</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="customername">CustomerName</string>
+    <string name="catch_pay">CatchPay</string>
+    <string name="cashback">Cashback</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="choose_button">Choose</string>
+    <string name="button_choose_customer">Choose Customer</string>
+    <string name="button_pick_up">Pick Up</string>
+    <string name="button_arrived">Arrived</string>
+    <string name="dialog_payments">Customer Payments :</string>
+    <string name="thai_bath">&#032;฿</string>
+    <string name="dialog_button_ok">Ok</string>
+    <string name="view_choose_customer_text_start">Start</string>
+    <string name="view_choose_customer_text_destination">Destination</string>
+    <string name="dialog_finish">Finish !</string>
+    <string name="view_transfer_top_up_text_from">From</string>
+    <string name="view_transfer_top_up_text_to">to</string>
+    <string name="cash_back_top_up_with_account">Top Up With Account</string>
+    <string name="cash_back_top_up_with_pin">Top Up With Pin</string>
+    <string name="e_wallet_transfer_account">Transfer Account</string>
+    <string name="e_wallet_transaction_history">E-Wallet Transaction History</string>
+    <string name="settings_notification">Notification</string>
+    <string name="settings_auto_match">Auto Match</string>
+    <string name="settings_sort_customer">Sort Customer By</string>
+    <string name="profile_taxi_id">Taxi ID</string>
+    <string name="profile_email_address">Email Address</string>
+    <string name="profile_mobile_number">Mobile Number</string>
+    <string name="profile_name">Name</string>
+    <string name="reward_activity_in_put_your_promotion">Enter your promotion code here</string>
+    <string name="view_reward_details">Details</string>
+
+    <!-- History From -->
+    <string-array name="From">
+        <item>Suvarnabhumi Airport (BKK), 999  Nong Prue, Amphoe Bang Phli, Chang Wat Samut Prakan 10540, Thailand</item>
+        <item>Don Mueang International Airport (DMK), 222 Vibhavadi Rangsit Rd, Khwaeng Sanambin, Khet Don Mueang, Krung Thep Maha Nakhon 10210, Thailand</item>
+        <item>Thanon Phaya Thai, Ratchathewi, Bangkok 10400, Thailand</item>
+        <item>Thanon Khao San, Khwaeng Talat Yot, Khet Phra Nakhon, Krung Thep Maha Nakhon 10200, Thailand</item>
+    </string-array>
+
+    <!-- Hisory To -->
+    <string-array name="To">
+        <item>991 Siam Paragon Rama I Rd, Khwaeng Pathum Wan, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand</item>
+        <item>Yaowarat Rd, Krung Thep Maha Nakhon, Thailand</item>
+        <item>Thanon Chalong Krung, Khwaeng Lam Prathew, Khet Lat Krabang, Krung Thep Maha Nakhon 10520, Thailand</item>
+        <item>4,4/1-4/2 4/4 Ratchadamri Rd, Pathum Wan, Bangkok 10330, Thailand</item>
+    </string-array>
+
+    <!-- Customer Start Head -->
+    <string-array name="CustomerStartHead">
+        <item>Suvarnabhumi Airport</item>
+        <item>Victory Monument</item>
+        <item>Siam Paragon</item>
+        <item>Don Mueang International Airport</item>
+    </string-array>
+
+    <!-- Customer Destination Head -->
+    <string-array name="CustomerDestinationHead">
+        <item>KMITL</item>
+        <item>Central World</item>
+        <item>Yaowarat Rd</item>
+        <item>Chatuchak Market</item>
+    </string-array>
+
+    <!-- Customer Start -->
+    <string-array name="CustomerStart">
+        <item>Suvarnabhumi Airport (BKK), 999  Nong Prue, Amphoe Bang Phli, Chang Wat Samut Prakan 10540, Thailand</item>
+        <item>Thanon Phaya Thai, Ratchathewi, Bangkok 10400, Thailand</item>
+        <item>991 Siam Paragon Rama I Rd, Khwaeng Pathum Wan, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand</item>
+        <item>Don Mueang International Airport (DMK), 222 Vibhavadi Rangsit Rd, Khwaeng Sanambin, Khet Don Mueang, Krung Thep Maha Nakhon 10210, Thailand</item>
+    </string-array>
+
+    <!-- Customer Destination -->
+    <string-array name="CustomerDestination">
+        <item>3 Thanon Chalong Krung, Khwaeng Lam Prathew, Khet Lat Krabang, Krung Thep Maha Nakhon 10520, Thailand</item>
+        <item>4,4/1-4/2 4/4 Ratchadamri Rd, Pathum Wan, Bangkok 10330, Thailand</item>
+        <item>Yaowarat Rd, Krung Thep Maha Nakhon, Thailand</item>
+        <item>587/10 Kamphaeng Phet 2 Rd Khwaeng Chatuchak, Khet Chatuchak Krung Thep Maha Nakhon 10900 Thailand</item>
+    </string-array>
+
+    <!-- setting customer sort -->
+    <string-array name="CustomerSort">
+        <item>Rate</item>
+        <item>Distance</item>
+    </string-array>
 </resources>

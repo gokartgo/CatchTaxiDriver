@@ -8,4 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <ImageButton
+        android:id="@+id/ivBtnRoute"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/map_route"
+        android:layout_margin="8dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_map_route"
+        android:visibility="gone"/>
+
 </RelativeLayout>

@@ -3,16 +3,39 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="main_grab_color">#00b140</color>
+    <color name="main_grab_color">#ffd200</color>
     <color name="not_use_color">#00000000</color>
     <color name="switch_off">#757575</color>
     <color name="switch_on">#00b140</color>
-    <color name="drawer_menu">#ff31415a</color>
-    <color name="drawer_menu_background">#222222</color>
+    <color name="drawer_menu_item">#ffd200</color>
+    <color name="drawer_customer_item">#ffd200</color>
+    <color name="drawer_menu_background_head">#eceff1</color>
+    <color name="drawer_menu_background">#fafafa</color>
+    <color name="drawer_menu_text_color">#000000</color>
+    <color name="choose_customer_color">#ffffff</color>
+    <color name="activity_color_button">#ffffff</color>
+    <color name="dialog_finish">#3a3840</color>
+    <color name="dialog_text">#ffffff</color>
+    <color name="dialog_text_cancel">#ffd200</color>
+    <color name="colorPressed">#80000000</color>
+    <color name="view_transfer_color">#fec100</color>
+    <color name="view_transfer_text_color">#ffffff</color>
+    <color name="text_color_text_register">#babac4</color>
+    <color name="text_sign_up">#ffffff</color>
+    <color name="settings_text_color">#000000</color>
+    <color name="profile_text_color">#000000</color>
+    <color name="profile_text_color_press">#ffffff</color>
+    <color name="reward_fragment_background">#dde7e9</color>
 
     <!-- Theme Dark -->
-    <color name="colorPrimaryThemeDark">#333333</color>
+    <color name="colorPrimaryThemeDark">#3a3840</color>
+    <color name="colorPrimaryDarkThemeDark">#28272a</color>
     <color name="disable_forground_grey">#42221f1f</color>
     <color name="disable_thumb_grey">#1c000000</color>
     <color name="colorAccentThemeDark">#46bdbf</color>
+
+    <!-- Theme Krungsri -->
+    <color name="colorPrimaryThemeKrungsri">#ffd200</color>
+    <color name="colorPrimaryDarkThemeKrungsri">#ffffff</color>
+    <color name="colorAccentThemeKrungsri">#5e483d</color>
 </resources>

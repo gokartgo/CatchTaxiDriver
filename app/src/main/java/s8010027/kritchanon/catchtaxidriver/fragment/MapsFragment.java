@@ -1,7 +1,9 @@
 package s8010027.kritchanon.catchtaxidriver.fragment;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -14,6 +16,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -24,13 +28,18 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.IOException;
 import java.util.List;
 
 import s8010027.kritchanon.catchtaxidriver.R;
+import s8010027.kritchanon.catchtaxidriver.view.ChooseCustomerView;
 
 
 @SuppressWarnings("unused")
@@ -38,22 +47,53 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
         , GoogleApiClient.ConnectionCallbacks
         , GoogleApiClient.OnConnectionFailedListener {
 
+    public interface ActivityCommunicator{
+        void passDataToActivity(int chooseCustomer);
+    }
+
     private GoogleMap mMap;
     private MapView mapView;
     private static final String TAG = "LocationDemo";
     private GoogleApiClient googleApiClient;
+    // location user
     double latitude;
     double longitude;
+    LatLng latLng;
     String strLatLng;
+    MarkerOptions markerUser;
+    // location customer
+    double[] latitudeCustomer={13.689999,13.764921,13.746815,13.913260};
+    double[] longitudeCustomer={100.750112,100.538246,100.535069,100.604199};
+    LatLng[] latLngCustomer;
+    String[] strLatLngCustomer={"Suvarnabhumi Airport","Victory Monument","Siam Paragon","Don Mueang International Airport"};
+    MarkerOptions[] markerCustomer;
+    Marker[] markerCustomerChoose = new Marker[4];
+    // Choose Customer Location
+    int chooseCustomer = -1;
+    // Choose Customer Location Dialog
+    ChooseCustomerView chooseCustomerViews;
+    String[] startHead;
+    String[] start;
+    String[] destinationHead;
+    String[] destination;
+    String[] customer;
+    String phone;
+    String[] rate;
+    Button btnChooseCustomer,btnCancelCustomer;
+    // set dialog
+    Dialog dialog;
+    // route map
+    PolylineOptions route;
 
     public MapsFragment() {
         super();
     }
 
     @SuppressWarnings("unused")
-    public static MapsFragment newInstance() {
+    public static MapsFragment newInstance(int chooseCustomer) {
         MapsFragment fragment = new MapsFragment();
         Bundle args = new Bundle();
+        args.putInt("chooseCustomer",chooseCustomer);
         fragment.setArguments(args);
         return fragment;
     }
@@ -62,6 +102,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init(savedInstanceState);
+
+        chooseCustomer = getArguments().getInt("chooseCustomer");
 
         if (savedInstanceState != null)
             onRestoreInstanceState(savedInstanceState);
@@ -77,6 +119,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
 
     private void init(Bundle savedInstanceState) {
         // Init Fragment level's variable(s) here
+        // set value of ChooseCustomerView
+        startHead = getContext().getResources().getStringArray(R.array.CustomerStartHead);
+        start = getContext().getResources().getStringArray(R.array.CustomerStart);
+        destinationHead = getContext().getResources().getStringArray(R.array.CustomerDestinationHead);
+        destination = getContext().getResources().getStringArray(R.array.CustomerDestination);
+        customer = new String[]{"Frank White","Tina Martin","Justin Long","Anna Stewart"};
+        phone = "+661234XXXX";
+        rate = new String[]{"5.0","4.5","4.5","3.5"};
     }
 
     @SuppressWarnings("UnusedParameters")
@@ -103,10 +153,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
 
     @Override
     public void onStop() {
+        super.onStop();
         if (googleApiClient.isConnected()) {
             googleApiClient.disconnect();
         }
-        super.onStop();
     }
 
     /*
@@ -161,22 +211,70 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
             latitude = lastLocation.getLatitude();
             longitude = lastLocation.getLongitude();
             // instantiate the class Geocoder
-            LatLng latLng = new LatLng(latitude, longitude);
+            latLng = new LatLng(latitude, longitude);
             Geocoder geocoder = new Geocoder(getContext());
             try {
                 List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
                 strLatLng = addressList.get(0).getLocality();
                 strLatLng += " " + addressList.get(0).getCountryName();
-                mMap.addMarker(new MarkerOptions().position(latLng).title(strLatLng));
+
+                markerCustomer = setLatLngCustomer(markerCustomer);
+
+                // Create Marker
+                markerUser = new MarkerOptions().position(latLng).title(strLatLng);
+                /********* Set Marker Icon  **************/
+                // BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.icon_google);
+                // markerUser.icon(icon);
+                // Add Marker
+                mMap.addMarker(markerUser);
+                if(chooseCustomer == -1) {
+                    for (int i = 0; i < 4; i++) {
+                        if(markerCustomerChoose[i] == null) {
+                            markerCustomerChoose[i] = mMap.addMarker(markerCustomer[i]);
+                        }
+                    }
+                }
+                if(chooseCustomer > -1){
+                    for (int i = 0; i < 4; i++) {
+                        markerCustomerChoose[i] = mMap.addMarker(markerCustomer[i]);
+                        if(i != chooseCustomer) {
+                            markerCustomerChoose[i].remove();
+                        }
+                        if(i == chooseCustomer){
+                            // route map
+                            route = new PolylineOptions().add(latLng, latLngCustomer[i]).width(10.0f).color(Color.BLUE);
+                            mMap.addPolyline(route);
+                            // set mid latitude longitude form start to destination
+                            latLng = new LatLng((latitude+latitudeCustomer[i])/2.0, (longitude+longitudeCustomer[i])/2.0);
+                        }
+                    }
+                }
+                // set marker customer click
+                mMap.setOnMarkerClickListener(markerClick);
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(getContext(),latitude+" "+longitude,Toast.LENGTH_LONG).show();
         }
         else{
             Toast.makeText(getContext(),"error lastlocation",Toast.LENGTH_LONG).show();
         }
+
+
+    }
+
+    private MarkerOptions[] setLatLngCustomer(MarkerOptions[] markerCustomer) {
+        latLngCustomer = new LatLng[4];
+        markerCustomer = new MarkerOptions[4];
+        for(int i=0;i<4;i++) {
+            latLngCustomer[i] = new LatLng(latitudeCustomer[i], longitudeCustomer[i]);
+            markerCustomer[i] = new MarkerOptions().position(latLngCustomer[i]).title(strLatLngCustomer[i]);
+            /********* Set Marker Icon  **************/
+            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.location_customer);
+            markerCustomer[i].icon(icon);
+        }
+        return markerCustomer;
     }
 
     @Override
@@ -190,5 +288,99 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
         Log.i(TAG,"Connection failed:error code = "
                 + connectionResult.getErrorCode());
     }
+
+    public int getChooseCustomer(){
+        return chooseCustomer;
+    }
+
+    /**********************
+     * dialog zone
+     */
+
+    private void showDialog(int index) {
+        dialog = new Dialog(getContext(),R.style.Theme_Dialog);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_choose_customer);
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+
+        // set ChooseCustomerView in dialog
+        chooseCustomerViews = new ChooseCustomerView(getContext());
+
+        chooseCustomerViews = (ChooseCustomerView) dialog.findViewById(R.id.customViewChooseCustomer);
+
+        // set ChooseCustomerView value
+        chooseCustomerViews.setTextTvStartHead(startHead[index]);
+        chooseCustomerViews.setTextTvStart(start[index]);
+        chooseCustomerViews.setTextTvDestinationHead(destinationHead[index]);
+        chooseCustomerViews.setTextTvDestination(destination[index]);
+        chooseCustomerViews.setTextTvCustomerName(customer[index]);
+        chooseCustomerViews.setTextTvPhone(phone);
+        chooseCustomerViews.setTextTvCustomerRate(rate[index]);
+
+        // set button click choose customer
+        btnChooseCustomer = (Button) dialog.findViewById(R.id.btnChooseCustomer);
+        btnCancelCustomer = (Button) dialog.findViewById(R.id.btnCancelCustomer);
+        btnChooseCustomer.setOnClickListener(buttonCustomer);
+        btnCancelCustomer.setOnClickListener(buttonCustomer);
+
+        dialog.show();
+    }
+
+    /************
+     * set marker click
+     */
+
+    final GoogleMap.OnMarkerClickListener markerClick = new GoogleMap.OnMarkerClickListener() {
+        @Override
+        public boolean onMarkerClick(Marker marker) {
+            if (marker.equals(markerCustomerChoose[0])) {
+                showDialog(0);
+            }
+            if (marker.equals(markerCustomerChoose[1])) {
+                showDialog(1);
+            }
+            if (marker.equals(markerCustomerChoose[2])) {
+                showDialog(2);
+            }
+            if (marker.equals(markerCustomerChoose[3])) {
+                showDialog(3);
+            }
+            return true;
+        }
+    };
+
+    /************
+     * set on click
+     */
+    final View.OnClickListener buttonCustomer = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(view == btnChooseCustomer){
+                for(int i=0;i<customer.length;i++){
+                    if(customer[i].equals(chooseCustomerViews.getTextTvCustomerName())){
+                        chooseCustomer = i;
+                    }
+                }
+                dialog.cancel();
+                // sent value to activity
+                ActivityCommunicator activityCommunicator = (ActivityCommunicator)getActivity();
+                activityCommunicator.passDataToActivity(chooseCustomer);
+                // refresh fragment from choose customer
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.contentContainer,MapsFragment.newInstance(chooseCustomer),"MapsFragment")
+                        .commit();
+            }
+            if(view == btnCancelCustomer){
+                dialog.cancel();
+                // refresh fragment from cancel customer
+                chooseCustomer = -1;
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.contentContainer,MapsFragment.newInstance(chooseCustomer),"MapsFragment")
+                        .commit();
+            }
+        }
+    };
+
 
 }

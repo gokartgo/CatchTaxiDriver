@@ -4,9 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import java.util.ArrayList;
-
-import s8010027.kritchanon.catchtaxidriver.util.ImageTextButton;
+import s8010027.kritchanon.catchtaxidriver.R;
 import s8010027.kritchanon.catchtaxidriver.view.ImageTextButtonView;
 
 /**
@@ -15,15 +13,21 @@ import s8010027.kritchanon.catchtaxidriver.view.ImageTextButtonView;
 
 public class MainAdapter extends BaseAdapter {
 
-    ArrayList<ImageTextButton> menuName = new ArrayList<ImageTextButton>();
+    ImageTextButtonView[] menuNameView;
+    Integer[] icon = {R.drawable.icon_history,R.drawable.icon_star,R.drawable.icon_catch_reward
+            ,R.drawable.icon_check,R.drawable.icon_setting
+            ,R.drawable.icon_callcenter,R.drawable.icon_block};
+    Integer[] text = {R.string.menu_1,R.string.menu_2,R.string.menu_3
+            ,R.string.menu_4,R.string.menu_5
+            ,R.string.menu_6,R.string.menu_7};
 
-    public MainAdapter(ArrayList<ImageTextButton> menuName){
-        this.menuName = menuName;
+    public MainAdapter(ImageTextButtonView[] menuNameView){
+        this.menuNameView = menuNameView;
     }
 
     @Override
     public int getCount() {
-        return menuName.size();
+        return menuNameView.length;
     }
 
     @Override
@@ -45,12 +49,9 @@ public class MainAdapter extends BaseAdapter {
         else{
             item = new ImageTextButtonView(parent.getContext());
         }
-
-        // set icon and string to drawer menu
-        item.setIvImageTextButton(menuName.get(i).getIcon());
-        item.setTvImageTextButton(parent.getContext().getResources().getString(menuName.get(i).getName()));
         // set color string of drawer menu
-        item.setColorTvImageTextButton(0xffffffff);
+        item.setIvImageTextButton(icon[i]);
+        item.setTvResourceImageTextButton(text[i]);
         return item;
     }
 }
