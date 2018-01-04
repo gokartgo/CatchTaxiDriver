@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/padding_view_cash_back_e_wallet"
+    android:paddingBottom="@dimen/padding_view_cash_back_e_wallet"
+    android:gravity="center"
+    android:background="@drawable/cash_back_e_wallet"
+    android:layout_margin="@dimen/margin_view_cash_back_e_wallet">
+
+    <ImageView
+        android:id="@+id/ivWallet"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:src="@drawable/credit" />
+
+    <TextView
+        android:id="@+id/tvWallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cashback"
+        android:textColor="@color/view_transfer_text_color"
+        android:textSize="@dimen/text_size_view_cash_back"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_view_transfer">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THB "
+            android:textColor="@color/view_transfer_text_color"
+            android:textSize="@dimen/text_size_view_cash_back_money"/>
+
+        <TextView
+            android:id="@+id/tvMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00"
+            android:textColor="@color/view_transfer_text_color"
+            android:textSize="@dimen/text_size_view_cash_back_money"/>
+
+    </LinearLayout>
+
+</LinearLayout>

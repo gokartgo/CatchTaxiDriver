@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_choose_customer_item">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/choose_customer_item"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/icon_choose_customer_size"
+                android:layout_height="@dimen/icon_choose_customer_size"
+                android:layout_margin="@dimen/icon_choose_customer_margin"
+                android:src="@drawable/location" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/view_choose_customer_text_start"
+                    android:textColor="@color/choose_customer_color"
+                    android:textSize="@dimen/text_choose_customer_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvStartHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="StartHead"
+                    android:textColor="@color/choose_customer_color"
+                    android:textSize="@dimen/text_choose_customer_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvStart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Start"
+                    android:textColor="@color/choose_customer_color"
+                    android:textSize="@dimen/text_choose_customer_size" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/icon_choose_customer_size"
+                android:layout_height="@dimen/icon_choose_customer_size"
+                android:layout_margin="@dimen/icon_choose_customer_margin"
+                android:src="@drawable/destination" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/view_choose_customer_text_destination"
+                    android:textSize="@dimen/text_choose_customer_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDestinationHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="DestinationMainHead"
+                    android:textSize="@dimen/text_choose_customer_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Destination"
+                    android:textSize="@dimen/text_choose_customer_size" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/choose_customer_item"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/icon_choose_customer_size"
+                android:layout_height="@dimen/icon_choose_customer_size"
+                android:layout_margin="@dimen/icon_choose_customer_margin"
+                android:src="@drawable/phone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="CustomerName"
+                    android:textColor="@color/choose_customer_color"
+                    android:textSize="@dimen/text_choose_customer_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Phone"
+                    android:textColor="@color/choose_customer_color"
+                    android:textSize="@dimen/text_choose_customer_size" />
+
+            </LinearLayout>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate "
+            android:textSize="@dimen/text_subhead"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCustomerRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5.0"
+            android:textSize="@dimen/text_subhead" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/5.0"
+            android:textSize="@dimen/text_subhead" />
+
+    </LinearLayout>
+</LinearLayout>

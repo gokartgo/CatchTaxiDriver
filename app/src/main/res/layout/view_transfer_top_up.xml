@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/view_transfer_color"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/margin_view_transfer">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_transfer_top_up_text_from"
+                android:textColor="@color/view_transfer_text_color"
+                android:layout_marginTop="@dimen/margin_view_transfer"
+                android:layout_marginBottom="@dimen/margin_view_transfer"
+                android:textSize="@dimen/text_size_view_transfer"/>
+            <ImageView
+                android:id="@+id/ivFrom"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/credit"/>
+            <TextView
+                android:id="@+id/tvFrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cashback"
+                android:textColor="@color/view_transfer_text_color"
+                android:layout_marginTop="@dimen/margin_view_transfer"
+                android:textSize="@dimen/text_size_view_transfer"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="THB "
+                    android:textColor="@color/view_transfer_text_color"
+                    android:textSize="@dimen/text_size_view_transfer"/>
+                <TextView
+                    android:id="@+id/tvMoneyFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="250.00"
+                    android:textColor="@color/view_transfer_text_color"
+                    android:textSize="@dimen/text_size_view_transfer"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_transfer_top_up_text_to"
+                android:textColor="@color/view_transfer_text_color"
+                android:layout_marginTop="@dimen/margin_view_transfer"
+                android:layout_marginBottom="@dimen/margin_view_transfer"
+                android:textSize="@dimen/text_size_view_transfer"/>
+            <ImageView
+                android:id="@+id/ivTo"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/money"/>
+            <TextView
+                android:id="@+id/tvTo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-Wallet"
+                android:textColor="@color/view_transfer_text_color"
+                android:layout_marginTop="@dimen/margin_view_transfer"
+                android:textSize="@dimen/text_size_view_transfer"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="THB "
+                    android:textColor="@color/view_transfer_text_color"
+                    android:textSize="@dimen/text_size_view_transfer"/>
+                <TextView
+                    android:id="@+id/tvMoneyTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1900.00"
+                    android:textColor="@color/view_transfer_text_color"
+                    android:textSize="@dimen/text_size_view_transfer"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/to"/>
+
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="@dimen/padding_dialog_top_up_pin">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please enter top-up Pin"
+        android:textSize="@dimen/text_title"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_view_transfer"
+        android:layout_marginTop="@dimen/margin_edit_text_dialog_top_up_pin"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_edit_text_dialog_top_up_pin"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_button_ok"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/dialog_text"
+            android:layout_marginRight="4dp"/>
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_button_cancel"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/dialog_text_cancel"/>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <s8010027.kritchanon.catchtaxidriver.view.CashbackEWalletView
+        android:id="@+id/customViewCashback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/btnAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_cash_back_e_wallet"
+        android:text="@string/e_wallet_transfer_account"
+        android:gravity="left"
+        android:textSize="@dimen/text_title"
+        android:textAllCaps="false"
+        android:textColor="@color/view_transfer_text_color"
+        android:layout_marginBottom="@dimen/margin_button_cash_back"/>
+
+    <Button
+        android:id="@+id/btnHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_cash_back_e_wallet"
+        android:text="@string/e_wallet_transaction_history"
+        android:gravity="left"
+        android:textSize="@dimen/text_title"
+        android:textAllCaps="false"
+        android:textColor="@color/view_transfer_text_color"
+        android:layout_marginBottom="@dimen/margin_button_cash_back"/>
+
+</LinearLayout>

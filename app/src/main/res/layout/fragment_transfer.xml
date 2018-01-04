@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_grab_color"
+    android:orientation="vertical">
+
+
+    <s8010027.kritchanon.catchtaxidriver.view.TransferTopUpView
+        android:id="@+id/customViewTopUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edMoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_edit_text_view_transfer"
+        android:background="@drawable/edittext_view_transfer"
+        android:gravity="right"
+        android:hint="Enter an amount (THB)"
+        android:inputType="number" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_button_cash_back"
+            android:background="@drawable/button_transfer"
+            android:text="Ok"
+            android:layout_alignParentBottom="true"
+            android:textAllCaps="false"
+            android:textColor="@color/view_transfer_text_color"
+            android:textSize="@dimen/text_title" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <s8010027.kritchanon.catchtaxidriver.view.ChooseCustomerView
+                android:id="@+id/customViewChooseCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/padding_choose_customer_item"
+                android:layout_marginRight="@dimen/padding_choose_customer_item"
+                android:layout_marginBottom="@dimen/padding_choose_customer_item">
+
+                <Button
+                    android:id="@+id/btnChooseCustomer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/choose_button"
+                    android:minHeight="@dimen/selector_button_heigh"
+                    android:background="@drawable/selector_dialog_button"
+                    android:textAllCaps="false"
+                    android:layout_marginRight="@dimen/margin_button_choose_customer"
+                    android:textColor="@color/choose_customer_color"/>
+
+                <Button
+                    android:id="@+id/btnCancelCustomer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cancel_button"
+                    android:minHeight="@dimen/selector_button_heigh"
+                    android:background="@drawable/selector_dialog_button"
+                    android:textAllCaps="false"
+                    android:layout_marginLeft="@dimen/margin_button_choose_customer"
+                    android:textColor="@color/choose_customer_color"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
