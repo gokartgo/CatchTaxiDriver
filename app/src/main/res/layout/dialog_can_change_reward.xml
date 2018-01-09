@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/dialog_finish"
+    android:padding="50dp">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/thank"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_thank"
+        android:layout_marginTop="@dimen/dialog_margin_top_finish"
+        android:textColor="@color/dialog_text"
+        android:textSize="@dimen/text_head_line"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>

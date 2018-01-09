@@ -42,6 +42,15 @@
     <string name="menu_6">Call Center</string>
     <string name="menu_7">Block</string>
 
+    <!-- menu catch reward -->
+    <string name="reward_points">&#160;points</string>
+    <!-- menu catch reward me-->
+    <string name="promotion_me_name_1">THB 50 Off Grab ride!</string>
+    <!-- menu catch reward all-->
+    <string name="promotion_name_1">THB 100 Off Grab ride!</string>
+    <string name="promotion_name_2">Free 1 movie ticket</string>
+    <string name="promotion_name_3">Get 10% discount</string>
+
     <!-- name actionbar -->
     <string name="history_actionbar">Job History</string>
     <string name="wallet_actionbar">Wallet</string>
@@ -71,7 +80,7 @@
     <string name="button_pick_up">Pick Up</string>
     <string name="button_arrived">Arrived</string>
     <string name="dialog_payments">Customer Payments :</string>
-    <string name="thai_bath">&#032;฿</string>
+    <string name="thai_bath">&#160;฿</string>
     <string name="dialog_button_ok">Ok</string>
     <string name="view_choose_customer_text_start">Start</string>
     <string name="view_choose_customer_text_destination">Destination</string>
@@ -91,6 +100,18 @@
     <string name="profile_name">Name</string>
     <string name="reward_activity_in_put_your_promotion">Enter your promotion code here</string>
     <string name="view_reward_details">Details</string>
+    <string name="dialog_please_enter_top_up_pin">Please enter top-up Pin</string>
+    <string name="dialog_confirm">Confirm</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_get_privilege">Get Privilege</string>
+    <string name="dialog_thank">Thank !</string>
+    <string name="please_enter_your_details_only_drivers_assigned_to_you_will_see_them">Please enter your details. Only drivers assigned to you will see them</string>
+    <string name="enter_your_mobile_number">Enter your mobile number.</string>
+    <string name="enter_your_email_address">Enter your email address.</string>
+    <string name="edit_number"><u>Edit number</u></string>
+    <string name="request_a_new_code"><u>Request a new code</u></string>
+    <string name="button_call">Call</string>
+    <string name="button_chat">Chat</string>
 
     <!-- History From -->
     <string-array name="From">

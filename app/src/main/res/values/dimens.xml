@@ -49,6 +49,7 @@
     <dimen name="main_activity_text_margin_left">8dp</dimen>
     <dimen name="view_block_margin">8dp</dimen>
     <dimen name="reward_view_toggle_margin">8dp</dimen>
-    <dimen name="reward_view_image_margin">24dp</dimen>
+    <dimen name="reward_view_image_margin">12dp</dimen>
     <dimen name="view_reward_margin">4dp</dimen>
+    <dimen name="text_not_input_size">9sp</dimen>
 </resources>

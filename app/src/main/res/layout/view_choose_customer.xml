@@ -103,11 +103,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linerLayoutCall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/choose_customer_item"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:clickable="true">
 
             <ImageView
                 android:layout_width="@dimen/icon_choose_customer_size"

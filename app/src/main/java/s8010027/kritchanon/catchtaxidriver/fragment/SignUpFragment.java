@@ -6,29 +6,43 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import s8010027.kritchanon.catchtaxidriver.R;
+import s8010027.kritchanon.catchtaxidriver.manager.UserData;
 
 
 @SuppressWarnings("unused")
 public class SignUpFragment extends Fragment {
 
-    public interface FragmentListener{
+    public interface FragmentListener {
         void onButtonSignUpClick();
     }
 
-    EditText edName, edSurname, edEmail, edStudentId, edMobile, edUsername, edPassword, edRePassword;
-    RadioGroup rgSex;
-    Button btnSignUpOk;
-    SQLiteDatabase database;
-    Cursor cursor;
+    Toolbar toolbar;
+    EditText edMobile;
+    EditText edName;
+    EditText edEmail;
+    EditText edTaxiId;
+    TextView tvMobile;
+    TextView tvName;
+    TextView tvEmail;
+    TextView tvTaxiId;
+    Button btnNext;
+    FragmentListener listener;
+    int check = 0;
+
 
     public SignUpFragment() {
         super();
@@ -66,17 +80,26 @@ public class SignUpFragment extends Fragment {
     @SuppressWarnings("UnusedParameters")
     private void initInstances(View rootView, Bundle savedInstanceState) {
         // Init 'View' instance(s) with rootView.findViewById here
-        edName = (EditText) rootView.findViewById(R.id.edName);
-        edSurname = (EditText) rootView.findViewById(R.id.edSurname);
-        edEmail = (EditText) rootView.findViewById(R.id.edEmail);
-        edStudentId = (EditText) rootView.findViewById(R.id.edStudentId);
-        edMobile = (EditText) rootView.findViewById(R.id.edMobile);
-        edUsername = (EditText) rootView.findViewById(R.id.edUsername);
-        edPassword = (EditText) rootView.findViewById(R.id.edPassword);
-        edRePassword = (EditText) rootView.findViewById(R.id.edRePassword);
-        rgSex = (RadioGroup) rootView.findViewById(R.id.rgSex);
-        btnSignUpOk = (Button) rootView.findViewById(R.id.btnSignUpOk);
-        btnSignUpOk.setOnClickListener(buttonClickSignUp);
+        // set tool bar
+        toolbar = (Toolbar)rootView.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        // set up button
+        setHasOptionsMenu(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
+
+        edMobile = (EditText)rootView.findViewById(R.id.edMobile);
+        edName = (EditText)rootView.findViewById(R.id.edName);
+        edEmail = (EditText)rootView.findViewById(R.id.edEmail);
+        edTaxiId = (EditText)rootView.findViewById(R.id.edTextId);
+        tvMobile = (TextView)rootView.findViewById(R.id.tvMobile);
+        tvName = (TextView)rootView.findViewById(R.id.tvName);
+        tvEmail = (TextView)rootView.findViewById(R.id.tvEmail);
+        tvTaxiId = (TextView)rootView.findViewById(R.id.tvTaxiId);
+        btnNext = (Button)rootView.findViewById(R.id.btnNext);
+        btnNext.setOnClickListener(btnClick);
+
     }
 
     @Override
@@ -106,31 +129,74 @@ public class SignUpFragment extends Fragment {
         // Restore Instance State here
     }
 
+    /*********
+     * up button onclick
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            listener = (FragmentListener) getActivity();
+            listener.onButtonSignUpClick();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
     /***************
      * Listener Zone
      ***************/
 
-    final View.OnClickListener buttonClickSignUp = new View.OnClickListener() {
+    final View.OnClickListener btnClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (view == btnSignUpOk) {
-                // button to SignUp
-                if (edName.length() > 0 && edSurname.length() > 0
-                        && edEmail.length() > 0 && edStudentId.length() > 0
-                        && edMobile.length() > 0 && edUsername.length() > 0
-                        && edPassword.length() > 0 && edRePassword.length() > 0) {
-                    if (edPassword.getText().toString().equals(edRePassword.getText().toString())) {
-                        Toast.makeText(getContext(), "SignUp Complete", Toast.LENGTH_SHORT).show();
-                        //sent value to activity
-                        FragmentListener listener = (FragmentListener) getActivity();
-                        listener.onButtonSignUpClick();
-                    } else {
-                        Toast.makeText(getContext(), "Password Not Match", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(getContext(), "Please Input Data", Toast.LENGTH_SHORT).show();
+            if(view == btnNext){
+                if(!edMobile.getText().toString().trim().equals("")){
+                    tvMobile.setVisibility(View.INVISIBLE);
+                    check++;
+                }
+                if(edMobile.getText().toString().trim().equals("")){
+                    tvMobile.setVisibility(View.VISIBLE);
+                }
+                if(!edName.getText().toString().trim().equals("")){
+                    tvName.setVisibility(View.INVISIBLE);
+                    check++;
+                }
+                if(edName.getText().toString().trim().equals("")){
+                    tvName.setVisibility(View.VISIBLE);
+                }
+                if(!edEmail.getText().toString().trim().equals("")){
+                    tvEmail.setVisibility(View.INVISIBLE);
+                    check++;
+                }
+                if(edEmail.getText().toString().trim().equals("")){
+                    tvEmail.setVisibility(View.VISIBLE);
+                }
+                if(!edTaxiId.getText().toString().trim().equals("")){
+                    tvTaxiId.setVisibility(View.INVISIBLE);
+                    check++;
+                }
+                if(edTaxiId.getText().toString().trim().equals("")){
+                    tvTaxiId.setVisibility(View.VISIBLE);
+                }
+                if(check == 4){
+                    setDataUser();getFragmentManager().beginTransaction()
+                            .replace(R.id.contentContainer,NumberDigitFragment.newInstance(),"NumberDigitFragment")
+                            .addToBackStack(null)
+                            .commit();
+                }
+                if(check != 4){
+                    check = 0;
                 }
             }
         }
     };
+
+    private void setDataUser() {
+        UserData.getInstance().setEmail(edEmail.getText().toString());
+        UserData.getInstance().setMobile(edMobile.getText().toString());
+        UserData.getInstance().setName(edName.getText().toString());
+        UserData.getInstance().setTaxiId(edTaxiId.getText().toString());
+    }
 }

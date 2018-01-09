@@ -3,31 +3,30 @@ package s8010027.kritchanon.catchtaxidriver.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.inthecheesefactory.thecheeselibrary.view.SlidingTabLayout;
+import android.widget.Button;
 
 import s8010027.kritchanon.catchtaxidriver.R;
 
 
 @SuppressWarnings("unused")
-public class RewardMainFragment extends Fragment {
+public class NumberDigitFragment extends Fragment {
 
-    ViewPager viewPager;
-    SlidingTabLayout slidingTabLayout;
+    public interface FragmentListener {
+        void onButtonFinishClick();
+    }
 
-    public RewardMainFragment() {
+    Button btnFinish;
+
+    public NumberDigitFragment() {
         super();
     }
 
     @SuppressWarnings("unused")
-    public static RewardMainFragment newInstance() {
-        RewardMainFragment fragment = new RewardMainFragment();
+    public static NumberDigitFragment newInstance() {
+        NumberDigitFragment fragment = new NumberDigitFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -45,7 +44,7 @@ public class RewardMainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_reward_main, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_number_digit, container, false);
         initInstances(rootView, savedInstanceState);
         return rootView;
     }
@@ -57,43 +56,8 @@ public class RewardMainFragment extends Fragment {
     @SuppressWarnings("UnusedParameters")
     private void initInstances(View rootView, Bundle savedInstanceState) {
         // Init 'View' instance(s) with rootView.findViewById here
-        viewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-        viewPager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                switch (position) {
-                    case 0:
-                        return RewardOfMeFragment.newInstance();
-                    case 1:
-                        return RewardAllFragment.newInstance();
-                    default:
-                        return null;
-                }
-            }
-
-            @Override
-            public int getCount() {
-                return 2;
-            }
-
-            @Override
-            public CharSequence getPageTitle(int position) {
-                switch(position){
-                    case 0:
-                        return "Reward Of Me";
-                    case 1:
-                        return "All Reward";
-                    default:
-                        return null;
-                }
-            }
-
-        });
-
-        slidingTabLayout = (SlidingTabLayout) rootView.findViewById(R.id.slidingTabLayout);
-        slidingTabLayout.setDistributeEvenly(true);
-        slidingTabLayout.setSelectedIndicatorColors(0xffffffff);
-        slidingTabLayout.setViewPager(viewPager);
+        btnFinish = (Button)rootView.findViewById(R.id.btnFinish);
+        btnFinish.setOnClickListener(btnClick);
     }
 
     @Override
@@ -122,5 +86,19 @@ public class RewardMainFragment extends Fragment {
     private void onRestoreInstanceState(Bundle savedInstanceState) {
         // Restore Instance State here
     }
+
+    /*************
+     * Listener zone
+     */
+
+    final View.OnClickListener btnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(view == btnFinish){
+                FragmentListener listener = (FragmentListener)getActivity();
+                listener.onButtonFinishClick();
+            }
+        }
+    };
 
 }

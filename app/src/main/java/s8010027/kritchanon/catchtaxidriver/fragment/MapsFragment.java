@@ -39,6 +39,8 @@ import java.io.IOException;
 import java.util.List;
 
 import s8010027.kritchanon.catchtaxidriver.R;
+import s8010027.kritchanon.catchtaxidriver.manager.CustomerData;
+import s8010027.kritchanon.catchtaxidriver.manager.CustomerStrDesData;
 import s8010027.kritchanon.catchtaxidriver.view.ChooseCustomerView;
 
 
@@ -72,13 +74,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
     int chooseCustomer = -1;
     // Choose Customer Location Dialog
     ChooseCustomerView chooseCustomerViews;
-    String[] startHead;
-    String[] start;
-    String[] destinationHead;
-    String[] destination;
-    String[] customer;
-    String phone;
-    String[] rate;
     Button btnChooseCustomer,btnCancelCustomer;
     // set dialog
     Dialog dialog;
@@ -119,14 +114,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
 
     private void init(Bundle savedInstanceState) {
         // Init Fragment level's variable(s) here
-        // set value of ChooseCustomerView
-        startHead = getContext().getResources().getStringArray(R.array.CustomerStartHead);
-        start = getContext().getResources().getStringArray(R.array.CustomerStart);
-        destinationHead = getContext().getResources().getStringArray(R.array.CustomerDestinationHead);
-        destination = getContext().getResources().getStringArray(R.array.CustomerDestination);
-        customer = new String[]{"Frank White","Tina Martin","Justin Long","Anna Stewart"};
-        phone = "+661234XXXX";
-        rate = new String[]{"5.0","4.5","4.5","3.5"};
     }
 
     @SuppressWarnings("UnusedParameters")
@@ -236,7 +223,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
                 }
                 if(chooseCustomer > -1){
                     for (int i = 0; i < 4; i++) {
-                        markerCustomerChoose[i] = mMap.addMarker(markerCustomer[i]);
+                        if(markerCustomerChoose[i] == null) {
+                            markerCustomerChoose[i] = mMap.addMarker(markerCustomer[i]);
+                        }
                         if(i != chooseCustomer) {
                             markerCustomerChoose[i].remove();
                         }
@@ -245,7 +234,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
                             route = new PolylineOptions().add(latLng, latLngCustomer[i]).width(10.0f).color(Color.BLUE);
                             mMap.addPolyline(route);
                             // set mid latitude longitude form start to destination
-                            latLng = new LatLng((latitude+latitudeCustomer[i])/2.0, (longitude+longitudeCustomer[i])/2.0);
+                            latLng = new LatLng((latitude+ CustomerStrDesData.getInstance().getStrLatitudeCustomer()[i])/2.0
+                                    , (longitude+CustomerStrDesData.getInstance().getStrLongitudeCustomer()[i])/2.0);
                         }
                     }
                 }
@@ -268,8 +258,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
         latLngCustomer = new LatLng[4];
         markerCustomer = new MarkerOptions[4];
         for(int i=0;i<4;i++) {
-            latLngCustomer[i] = new LatLng(latitudeCustomer[i], longitudeCustomer[i]);
-            markerCustomer[i] = new MarkerOptions().position(latLngCustomer[i]).title(strLatLngCustomer[i]);
+            latLngCustomer[i] = new LatLng(CustomerStrDesData.getInstance().getStrLatitudeCustomer()[i]
+                    , CustomerStrDesData.getInstance().getStrLongitudeCustomer()[i]);
+            markerCustomer[i] = new MarkerOptions()
+                    .position(latLngCustomer[i])
+                    .title(CustomerStrDesData.getInstance().getStrPlaceLatLngCustomer()[i]);
             /********* Set Marker Icon  **************/
             BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.location_customer);
             markerCustomer[i].icon(icon);
@@ -310,13 +303,13 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
         chooseCustomerViews = (ChooseCustomerView) dialog.findViewById(R.id.customViewChooseCustomer);
 
         // set ChooseCustomerView value
-        chooseCustomerViews.setTextTvStartHead(startHead[index]);
-        chooseCustomerViews.setTextTvStart(start[index]);
-        chooseCustomerViews.setTextTvDestinationHead(destinationHead[index]);
-        chooseCustomerViews.setTextTvDestination(destination[index]);
-        chooseCustomerViews.setTextTvCustomerName(customer[index]);
-        chooseCustomerViews.setTextTvPhone(phone);
-        chooseCustomerViews.setTextTvCustomerRate(rate[index]);
+        chooseCustomerViews.setTextTvStartHead(CustomerData.getInstance().getStartHead()[index]);
+        chooseCustomerViews.setTextTvStart(CustomerData.getInstance().getStart()[index]);
+        chooseCustomerViews.setTextTvDestinationHead(CustomerData.getInstance().getDestinationHead()[index]);
+        chooseCustomerViews.setTextTvDestination(CustomerData.getInstance().getDestination()[index]);
+        chooseCustomerViews.setTextTvCustomerName(CustomerData.getInstance().getCustomer()[index]);
+        chooseCustomerViews.setTextTvPhone(CustomerData.getInstance().getPhone());
+        chooseCustomerViews.setTextTvCustomerRate(CustomerData.getInstance().getRate()[index]);
 
         // set button click choose customer
         btnChooseCustomer = (Button) dialog.findViewById(R.id.btnChooseCustomer);
@@ -357,8 +350,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
         @Override
         public void onClick(View view) {
             if(view == btnChooseCustomer){
-                for(int i=0;i<customer.length;i++){
-                    if(customer[i].equals(chooseCustomerViews.getTextTvCustomerName())){
+                for(int i=0;i<CustomerData.getInstance().getCustomer().length;i++){
+                    if(CustomerData.getInstance().getCustomer()[i].equals(chooseCustomerViews.getTextTvCustomerName())){
                         chooseCustomer = i;
                     }
                 }

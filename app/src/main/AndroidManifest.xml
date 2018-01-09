@@ -9,6 +9,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -52,8 +53,10 @@
         <activity android:name=".activity.WalletActivity" />
         <activity android:name=".activity.RewardActivity"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".activity.SettingsActivity"></activity>
-        <activity android:name=".activity.BlockActivity"></activity>
+        <activity android:name=".activity.SettingsActivity"/>
+        <activity android:name=".activity.BlockActivity"/>
+        <activity android:name=".activity.ChatActivity"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

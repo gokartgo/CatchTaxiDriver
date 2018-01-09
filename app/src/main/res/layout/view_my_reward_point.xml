@@ -36,16 +36,17 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tvPoint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/main_activity_text_margin_left"
-                    android:text="500 "
+                    android:text="500"
                     android:textSize="@dimen/text_body_2" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Available Points"
+                    android:text=" Available Points"
                     android:textSize="@dimen/text_body_2" />
             </LinearLayout>
         </LinearLayout>

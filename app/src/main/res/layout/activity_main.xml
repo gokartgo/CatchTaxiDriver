@@ -78,6 +78,39 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/btnCall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_button_activity"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_dialog_button"
+                        android:minHeight="@dimen/selector_button_heigh"
+                        android:text="@string/button_call"
+                        android:textAllCaps="false"
+                        android:textColor="@color/activity_color_button"
+                        android:visibility="gone"/>
+
+                    <Button
+                        android:id="@+id/btnChat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_button_activity"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_dialog_button"
+                        android:minHeight="@dimen/selector_button_heigh"
+                        android:text="@string/button_chat"
+                        android:textAllCaps="false"
+                        android:textColor="@color/activity_color_button"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
                         android:id="@+id/btnPickUp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -149,7 +182,7 @@
                 android:src="@drawable/profile_driver" />
 
             <TextView
-                android:id="@+id/nameTxt"
+                android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -158,7 +191,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/emailTxt"
+                android:id="@+id/tvEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

@@ -2,10 +2,15 @@ package s8010027.kritchanon.catchtaxidriver.view;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
 import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
@@ -23,6 +28,7 @@ public class ChooseCustomerView extends BaseCustomViewGroup {
     TextView tvCustomerName;
     TextView tvPhone;
     TextView tvCustomerRate;
+    LinearLayout linearLayoutCall;
 
     public ChooseCustomerView(Context context) {
         super(context);
@@ -65,6 +71,8 @@ public class ChooseCustomerView extends BaseCustomViewGroup {
         tvCustomerName = (TextView)findViewById(R.id.tvCustomerName);
         tvPhone = (TextView)findViewById(R.id.tvPhone);
         tvCustomerRate = (TextView)findViewById(R.id.tvCustomerRate);
+        linearLayoutCall = (LinearLayout)findViewById(R.id.linerLayoutCall);
+        linearLayoutCall.setOnClickListener(layoutClick);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -133,4 +141,19 @@ public class ChooseCustomerView extends BaseCustomViewGroup {
     public void setTextTvCustomerRate(String text){
         tvCustomerRate.setText(text);
     }
+
+    /*********
+     * listener zone
+     */
+
+    final View.OnClickListener layoutClick = new OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(view == linearLayoutCall){
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:012345****"));
+                getContext().startActivity(intent);
+            }
+        }
+    };
 }

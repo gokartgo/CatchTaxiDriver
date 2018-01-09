@@ -22,21 +22,8 @@ public class SignInSignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // request permission from user
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
+        requestPermissions();
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-            } else {
-
-
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},23
-                );
-            }
-        }
         setContentView(R.layout.activity_sign_in_sign_up);
 
         initInstance();
@@ -48,6 +35,27 @@ public class SignInSignUpActivity extends AppCompatActivity {
                     .commit();
         }
 
+    }
+
+    private void requestPermissions() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) +
+                        ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) ||
+                    ActivityCompat.shouldShowRequestPermissionRationale(this,
+                            Manifest.permission.CALL_PHONE)) {
+
+            } else {
+
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION
+                ,Manifest.permission.CALL_PHONE},23
+                );
+            }
+        }
     }
 
     private void initInstance() {

@@ -2,58 +2,73 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/view_reward_margin">
+    android:layout_margin="@dimen/view_reward_margin"
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/reward">
+        android:background="@drawable/reward"
+        android:orientation="vertical">
 
-    <ToggleButton
-        android:id="@+id/btnStar"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_gravity="right"
-        android:layout_margin="@dimen/reward_view_toggle_margin"
-        android:background="@drawable/selector_switch_star"
-        android:checked="false"
-        android:textOff="@null"
-        android:textOn="@null" />
+        <ToggleButton
+            android:id="@+id/btnStar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="right"
+            android:layout_margin="@dimen/reward_view_toggle_margin"
+            android:background="@drawable/selector_switch_star"
+            android:checked="false"
+            android:textOff="@null"
+            android:textOn="@null" />
 
-    <ImageView
-        android:id="@+id/ivPromotion"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/reward_view_image_margin"
-        android:src="@mipmap/ic_launcher" />
-        
-    <TextView
-        android:id="@+id/tvPromotionName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="THB50 Off Grab ride!"
-        android:textSize="@dimen/text_body_2"/>
+        <ImageView
+            android:id="@+id/ivPromotion"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/reward_view_image_margin"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tvPromotionPoint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="500 points"
-        android:textSize="@dimen/text_body_2"
-        android:layout_marginBottom="@dimen/reward_view_image_margin"/>
+        <TextView
+            android:id="@+id/tvPromotionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/promotion_me_name_1"
+            android:textSize="@dimen/text_body_2" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/reward_view_image_margin"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/tvPromotionPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500"
+                android:textSize="@dimen/text_body_2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reward_points"
+                android:textSize="@dimen/text_body_2"
+                android:freezesText="true"/>
+
+        </LinearLayout>
     </LinearLayout>
+
     <Button
         android:id="@+id/btnPromotionPurchase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_reward"
         android:text="Purchase"
-        android:textColor="@color/main_grab_color"/>
+        android:textColor="@color/main_grab_color" />
 
 </LinearLayout>

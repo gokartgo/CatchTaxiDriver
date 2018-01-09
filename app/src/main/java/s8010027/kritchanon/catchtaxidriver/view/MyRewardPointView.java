@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
 import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
@@ -12,6 +13,8 @@ import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
 import s8010027.kritchanon.catchtaxidriver.R;
 
 public class MyRewardPointView extends BaseCustomViewGroup {
+
+    TextView tvPoint;
 
     public MyRewardPointView(Context context) {
         super(context);
@@ -47,6 +50,7 @@ public class MyRewardPointView extends BaseCustomViewGroup {
 
     private void initInstances() {
         // findViewById here
+        tvPoint = (TextView) findViewById(R.id.tvPoint);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -85,4 +89,7 @@ public class MyRewardPointView extends BaseCustomViewGroup {
         // Restore State from bundle here
     }
 
+    public void setTextTvPoint(String text) {
+        tvPoint.setText(text);
+    }
 }

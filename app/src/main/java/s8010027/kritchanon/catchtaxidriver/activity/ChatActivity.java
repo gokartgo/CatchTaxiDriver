@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import s8010027.kritchanon.catchtaxidriver.R;
+import s8010027.kritchanon.catchtaxidriver.fragment.ChatFragment;
 import s8010027.kritchanon.catchtaxidriver.fragment.NumberDigitFragment;
-import s8010027.kritchanon.catchtaxidriver.fragment.SignInFragment;
 import s8010027.kritchanon.catchtaxidriver.fragment.SignUpFragment;
 
-public class SignUpActivity extends AppCompatActivity implements
-        SignUpFragment.FragmentListener
-        ,NumberDigitFragment.FragmentListener{
+public class ChatActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,19 +18,10 @@ public class SignUpActivity extends AppCompatActivity implements
 
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.contentContainer, SignUpFragment.newInstance(),"SignUpFragment")
+                    .add(R.id.contentContainer, ChatFragment.newInstance(),"ChatFragment")
                     .commit();
         }
     }
 
-    @Override
-    public void onButtonSignUpClick() {
-        finish();
-    }
 
-    @Override
-    public void onButtonFinishClick() {
-        Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
-        startActivity(intent);
-    }
 }

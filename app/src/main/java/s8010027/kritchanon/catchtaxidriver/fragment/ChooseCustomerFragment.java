@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import s8010027.kritchanon.catchtaxidriver.R;
+import s8010027.kritchanon.catchtaxidriver.manager.CustomerData;
 import s8010027.kritchanon.catchtaxidriver.view.ChooseCustomerView;
 
 
@@ -21,13 +22,7 @@ public class ChooseCustomerFragment extends Fragment {
 
     ChooseCustomerView[] chooseCustomerViews;
     int[] resuorce;
-    String[] startHead;
-    String[] start;
-    String[] destinationHead;
-    String[] destination;
-    String[] customer;
-    String phone;
-    String[] rate;
+
 
     public ChooseCustomerFragment() {
         super();
@@ -62,13 +57,6 @@ public class ChooseCustomerFragment extends Fragment {
         // Init Fragment level's variable(s) here
         // set value of ChooseCustomerView
         resuorce = new int[]{R.id.chooseCustomerView1, R.id.chooseCustomerView2, R.id.chooseCustomerView3, R.id.chooseCustomerView4};
-        startHead = getContext().getResources().getStringArray(R.array.CustomerStartHead);
-        start = getContext().getResources().getStringArray(R.array.CustomerStart);
-        destinationHead = getContext().getResources().getStringArray(R.array.CustomerDestinationHead);
-        destination = getContext().getResources().getStringArray(R.array.CustomerDestination);
-        customer = new String[]{"Frank White","Tina Martin","Justin Long","Anna Stewart"};
-        phone = "+661234XXXX";
-        rate = new String[]{"5.0","4.5","4.5","3.5"};
     }
 
     @SuppressWarnings("UnusedParameters")
@@ -80,13 +68,13 @@ public class ChooseCustomerFragment extends Fragment {
         for(int i=0;i<4;i++) {
             chooseCustomerViews[i] = (ChooseCustomerView) rootView.findViewById(resuorce[i]);
             // set ChooseCustomerView value
-            chooseCustomerViews[i].setTextTvStartHead(startHead[i]);
-            chooseCustomerViews[i].setTextTvStart(start[i]);
-            chooseCustomerViews[i].setTextTvDestinationHead(destinationHead[i]);
-            chooseCustomerViews[i].setTextTvDestination(destination[i]);
-            chooseCustomerViews[i].setTextTvCustomerName(customer[i]);
-            chooseCustomerViews[i].setTextTvPhone(phone);
-            chooseCustomerViews[i].setTextTvCustomerRate(rate[i]);
+            chooseCustomerViews[i].setTextTvStartHead(CustomerData.getInstance().getStartHead()[i]);
+            chooseCustomerViews[i].setTextTvStart(CustomerData.getInstance().getStart()[i]);
+            chooseCustomerViews[i].setTextTvDestinationHead(CustomerData.getInstance().getDestinationHead()[i]);
+            chooseCustomerViews[i].setTextTvDestination(CustomerData.getInstance().getDestination()[i]);
+            chooseCustomerViews[i].setTextTvCustomerName(CustomerData.getInstance().getCustomer()[i]);
+            chooseCustomerViews[i].setTextTvPhone(CustomerData.getInstance().getPhone());
+            chooseCustomerViews[i].setTextTvCustomerRate(CustomerData.getInstance().getRate()[i]);
             // set on click ChooseCustomerViews
             chooseCustomerViews[i].setOnClickListener(onClickListener);
         }

@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import s8010027.kritchanon.catchtaxidriver.R;
+import s8010027.kritchanon.catchtaxidriver.manager.CustomerStrDesData;
 import s8010027.kritchanon.catchtaxidriver.view.ChooseCustomerView;
 
 
@@ -48,10 +49,7 @@ public class SentFinishCustomerFragment extends Fragment implements OnMapReadyCa
     private static final String TAG = "LocationDemo";
     private GoogleApiClient googleApiClient;
     // location customer destination
-    double[] desLatitudeCustomer = {13.729896, 13.746228, 13.741260, 13.799946};
-    double[] desLongitudeCustomer = {100.779316, 100.539819, 100.508186, 100.550854};
     LatLng[] desLatLngCustomer;
-    String[] desPlaceLatLngCustomer = {"KMITL", "Central World", "Yaowarat Rd", "Chatuchak Market"};
     MarkerOptions[] desMarkerCustomer;
     Marker[] desMarkerCustomerChoose = new Marker[4];
     // Choose Customer Location
@@ -207,8 +205,11 @@ public class SentFinishCustomerFragment extends Fragment implements OnMapReadyCa
         desLatLngCustomer = new LatLng[4];
         desMarkerCustomer = new MarkerOptions[4];
         for (int i = 0; i < 4; i++) {
-            desLatLngCustomer[i] = new LatLng(desLatitudeCustomer[i], desLongitudeCustomer[i]);
-            desMarkerCustomer[i] = new MarkerOptions().position(desLatLngCustomer[i]).title(desPlaceLatLngCustomer[i]);
+            desLatLngCustomer[i] = new LatLng(CustomerStrDesData.getInstance().getDesLatitudeCustomer()[i]
+                    ,CustomerStrDesData.getInstance().getDesLongitudeCustomer()[i]);
+            desMarkerCustomer[i] = new MarkerOptions()
+                    .position(desLatLngCustomer[i])
+                    .title(CustomerStrDesData.getInstance().getDesPlaceLatLngCustomer()[i]);
             /********* Set Marker Icon  **************/
             BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.location_user);
             desMarkerCustomer[i].icon(icon);

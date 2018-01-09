@@ -23,7 +23,7 @@ public class RewardView extends BaseCustomViewGroup {
     ImageView ivPromotion;
     TextView tvPromotionName;
     TextView tvPromotionPoint;
-    Button btnPromotionPurchase;
+    private Button btnPromotionPurchase;
 
     public RewardView(Context context) {
         super(context);
@@ -63,7 +63,6 @@ public class RewardView extends BaseCustomViewGroup {
         tvPromotionName = (TextView)findViewById(R.id.tvPromotionName);
         tvPromotionPoint = (TextView)findViewById(R.id.tvPromotionPoint);
         btnPromotionPurchase = (Button)findViewById(R.id.btnPromotionPurchase);
-        btnPromotionPurchase.setOnClickListener(buttonClick);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -106,29 +105,21 @@ public class RewardView extends BaseCustomViewGroup {
         ivPromotion.setImageResource(resource);
     }
 
-    public void setTextTvPromotionName(String text) {
+    public void setTextTvPromotionName(int text) {
         tvPromotionName.setText(text);
     }
 
-    public String getTvPromotionPoint() {
+    public String getTextTvPromotionPoint() {
         return tvPromotionPoint.getText().toString();
     }
 
-    public void setTvPromotionPoint(String text) {
+    public void setTextTvPromotionPoint(String text) {
         tvPromotionPoint.setText(text);
     }
 
-    /**********
-     * listener zone
-     */
 
-    final View.OnClickListener buttonClick = new OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if(view == btnPromotionPurchase){
-                Toast.makeText(getContext(),"asdf",Toast.LENGTH_SHORT).show();
-            }
-        }
-    };
+    public Button getBtnPromotionPurchase() {
+        return btnPromotionPurchase;
+    }
 
 }

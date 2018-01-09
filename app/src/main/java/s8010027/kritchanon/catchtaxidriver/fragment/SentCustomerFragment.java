@@ -42,6 +42,8 @@ import java.io.IOException;
 import java.util.List;
 
 import s8010027.kritchanon.catchtaxidriver.R;
+import s8010027.kritchanon.catchtaxidriver.manager.CustomerData;
+import s8010027.kritchanon.catchtaxidriver.manager.CustomerStrDesData;
 import s8010027.kritchanon.catchtaxidriver.view.ChooseCustomerView;
 
 
@@ -55,38 +57,19 @@ public class SentCustomerFragment extends Fragment implements OnMapReadyCallback
     private static final String TAG = "LocationDemo";
     private GoogleApiClient googleApiClient;
     // location user
-    double latitude;
-    double longitude;
     LatLng latLng;
     String strLatLng;
     MarkerOptions markerUser;
     // location customer start
-    double[] strLatitudeCustomer = {13.689999, 13.764921, 13.746815, 13.913260};
-    double[] strLongitudeCustomer = {100.750112, 100.538246, 100.535069, 100.604199};
     LatLng[] strLatLngCustomer;
-    String[] strPlaceLatLngCustomer = {"Suvarnabhumi Airport", "Victory Monument", "Siam Paragon", "Don Mueang International Airport"};
     MarkerOptions[] strMarkerCustomer;
     Marker[] strMarkerCustomerChoose = new Marker[4];
     // location customer destination
-    double[] desLatitudeCustomer = {13.729896, 13.746228, 13.741260, 13.799946};
-    double[] desLongitudeCustomer = {100.779316, 100.539819, 100.508186, 100.550854};
     LatLng[] desLatLngCustomer;
-    String[] desPlaceLatLngCustomer = {"KMITL", "Central World", "Yaowarat Rd", "Chatuchak Market"};
     MarkerOptions[] desMarkerCustomer;
     Marker[] desMarkerCustomerChoose = new Marker[4];
     // Choose Customer Location
     int chooseCustomer = -1;
-    // Choose Customer Location Dialog
-    ChooseCustomerView chooseCustomerViews;
-    String[] startHead;
-    String[] start;
-    String[] destinationHead;
-    String[] destination;
-    String[] customer;
-    String phone;
-    Button btnChooseCustomer, btnCancelCustomer;
-    // set dialog
-    Dialog dialog;
     // route map
     PolylineOptions route;
     ImageButton ivBtnRoute;
@@ -125,13 +108,6 @@ public class SentCustomerFragment extends Fragment implements OnMapReadyCallback
 
     private void init(Bundle savedInstanceState) {
         // Init Fragment level's variable(s) here
-        // set value of ChooseCustomerView
-        startHead = getContext().getResources().getStringArray(R.array.CustomerStartHead);
-        start = getContext().getResources().getStringArray(R.array.CustomerStart);
-        destinationHead = getContext().getResources().getStringArray(R.array.CustomerDestinationHead);
-        destination = getContext().getResources().getStringArray(R.array.CustomerDestination);
-        customer = new String[]{"Frank White", "Tina Martin", "Justin Long", "Anna Stewart"};
-        phone = "+661234XXXX";
     }
 
     @SuppressWarnings("UnusedParameters")
@@ -226,8 +202,10 @@ public class SentCustomerFragment extends Fragment implements OnMapReadyCallback
                             .width(10.0f).color(Color.BLUE);
                     mMap.addPolyline(route);
                     // set mid latitude longitude form start to destination
-                    latLng = new LatLng((strLatitudeCustomer[i] + desLatitudeCustomer[i]) / 2.0
-                            , (strLongitudeCustomer[i] + desLongitudeCustomer[i]) / 2.0);
+                    latLng = new LatLng((CustomerStrDesData.getInstance().getStrLatitudeCustomer()[i]
+                            + CustomerStrDesData.getInstance().getDesLatitudeCustomer()[i]) / 2.0
+                            , (CustomerStrDesData.getInstance().getStrLongitudeCustomer()[i]
+                            + CustomerStrDesData.getInstance().getDesLongitudeCustomer()[i]) / 2.0);
                 }
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11.5f));
@@ -241,8 +219,11 @@ public class SentCustomerFragment extends Fragment implements OnMapReadyCallback
         strLatLngCustomer = new LatLng[4];
         strMarkerCustomer = new MarkerOptions[4];
         for (int i = 0; i < 4; i++) {
-            strLatLngCustomer[i] = new LatLng(strLatitudeCustomer[i], strLongitudeCustomer[i]);
-            strMarkerCustomer[i] = new MarkerOptions().position(strLatLngCustomer[i]).title(strPlaceLatLngCustomer[i]);
+            strLatLngCustomer[i] = new LatLng(CustomerStrDesData.getInstance().getStrLatitudeCustomer()[i]
+                    ,CustomerStrDesData.getInstance().getStrLongitudeCustomer()[i]);
+            strMarkerCustomer[i] = new MarkerOptions()
+                    .position(strLatLngCustomer[i])
+                    .title(CustomerStrDesData.getInstance().getStrPlaceLatLngCustomer()[i]);
             /********* Set Marker Icon  **************/
             BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.location_user);
             strMarkerCustomer[i].icon(icon);
@@ -254,8 +235,11 @@ public class SentCustomerFragment extends Fragment implements OnMapReadyCallback
         desLatLngCustomer = new LatLng[4];
         desMarkerCustomer = new MarkerOptions[4];
         for (int i = 0; i < 4; i++) {
-            desLatLngCustomer[i] = new LatLng(desLatitudeCustomer[i], desLongitudeCustomer[i]);
-            desMarkerCustomer[i] = new MarkerOptions().position(desLatLngCustomer[i]).title(desPlaceLatLngCustomer[i]);
+            desLatLngCustomer[i] = new LatLng(CustomerStrDesData.getInstance().getDesLatitudeCustomer()[i]
+                    , CustomerStrDesData.getInstance().getDesLongitudeCustomer()[i]);
+            desMarkerCustomer[i] = new MarkerOptions()
+                    .position(desLatLngCustomer[i])
+                    .title(CustomerStrDesData.getInstance().getDesPlaceLatLngCustomer()[i]);
         }
         return desMarkerCustomer;
     }
@@ -285,6 +269,9 @@ public class SentCustomerFragment extends Fragment implements OnMapReadyCallback
         }
     };
 
+    /*********
+     * open google map
+     */
     private void openGoogleMap(LatLng src, LatLng dest) {
         String url = "http://maps.google.com/maps?saddr="+src.latitude+","+src.longitude+"&daddr="+dest.latitude+","+dest.longitude+"&mode=driving";
         Uri gmmIntentUri = Uri.parse(url);
