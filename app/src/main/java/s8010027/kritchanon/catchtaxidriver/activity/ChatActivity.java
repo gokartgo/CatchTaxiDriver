@@ -9,12 +9,12 @@ import s8010027.kritchanon.catchtaxidriver.fragment.ChatFragment;
 import s8010027.kritchanon.catchtaxidriver.fragment.NumberDigitFragment;
 import s8010027.kritchanon.catchtaxidriver.fragment.SignUpFragment;
 
-public class ChatActivity extends AppCompatActivity{
+public class ChatActivity extends AppCompatActivity implements ChatFragment.FragmentListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_chat);
 
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction()
@@ -24,4 +24,8 @@ public class ChatActivity extends AppCompatActivity{
     }
 
 
+    @Override
+    public void onButtonHomeClick() {
+        finish();
+    }
 }

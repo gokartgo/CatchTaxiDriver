@@ -79,6 +79,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
     Dialog dialog;
     // route map
     PolylineOptions route;
+    // fragment sent value to Mainactivity
+    ActivityCommunicator activityCommunicator;
 
     public MapsFragment() {
         super();
@@ -357,20 +359,16 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
                 }
                 dialog.cancel();
                 // sent value to activity
-                ActivityCommunicator activityCommunicator = (ActivityCommunicator)getActivity();
+                activityCommunicator = (ActivityCommunicator)getActivity();
                 activityCommunicator.passDataToActivity(chooseCustomer);
-                // refresh fragment from choose customer
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.contentContainer,MapsFragment.newInstance(chooseCustomer),"MapsFragment")
-                        .commit();
             }
             if(view == btnCancelCustomer){
                 dialog.cancel();
                 // refresh fragment from cancel customer
                 chooseCustomer = -1;
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.contentContainer,MapsFragment.newInstance(chooseCustomer),"MapsFragment")
-                        .commit();
+                // sent value to activity
+                activityCommunicator = (ActivityCommunicator)getActivity();
+                activityCommunicator.passDataToActivity(chooseCustomer);
             }
         }
     };

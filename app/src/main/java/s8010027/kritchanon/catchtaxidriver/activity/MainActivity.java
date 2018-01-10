@@ -231,6 +231,10 @@ public class MainActivity extends AppCompatActivity implements
                 Intent intent = new Intent(MainActivity.this,RewardActivity.class);
                 startActivity(intent);
             }
+            if(position == 3){
+                Intent intent = new Intent(MainActivity.this,CheckPointActivity.class);
+                startActivity(intent);
+            }
             if(position == 4){
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
@@ -300,6 +304,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void passDataToActivity(int chooseCustomer) {
         this.chooseCustomer = chooseCustomer;
+        refreshMapsFragment();
     }
 
     @Override

@@ -252,7 +252,7 @@ public class SentFinishCustomerFragment extends Fragment implements OnMapReadyCa
                             .replace(R.id.contentContainer, MapsFragment.newInstance(-1), "MapsFragment")
                             .commit();
                     // money from customer is minus card fees 25 baths
-                    int money = Integer.parseInt(edMoney.getText().toString()) - 25;
+                    int money = Integer.parseInt(edMoney.getText().toString());
                     // sent value to mainactivity
                     finishCustomer.sentFinishCustomerValue(-1,0,money);
                 }

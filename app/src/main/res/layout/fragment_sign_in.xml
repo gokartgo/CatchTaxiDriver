@@ -52,6 +52,13 @@
         android:id="@+id/btnSignInWithGoogle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/bottom_image_text_button_view"
+        />
+
+    <s8010027.kritchanon.catchtaxidriver.view.ImageTextButtonView
+        android:id="@+id/btnSignInWithFacebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         />
 
     <LinearLayout

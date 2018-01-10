@@ -112,6 +112,7 @@
     <string name="request_a_new_code"><u>Request a new code</u></string>
     <string name="button_call">Call</string>
     <string name="button_chat">Chat</string>
+    <string name="button_cancel">Cancel</string>
 
     <!-- History From -->
     <string-array name="From">

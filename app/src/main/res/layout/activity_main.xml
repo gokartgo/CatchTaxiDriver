@@ -54,7 +54,6 @@
         </RelativeLayout>
 
 
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -88,7 +87,7 @@
                         android:text="@string/button_call"
                         android:textAllCaps="false"
                         android:textColor="@color/activity_color_button"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/btnChat"
@@ -101,7 +100,7 @@
                         android:text="@string/button_chat"
                         android:textAllCaps="false"
                         android:textColor="@color/activity_color_button"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
@@ -134,22 +133,35 @@
                         android:textAllCaps="false"
                         android:textColor="@color/activity_color_button" />
 
+                    <Button
+                        android:id="@+id/btnCancel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_button_activity"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_dialog_button"
+                        android:minHeight="@dimen/selector_button_heigh"
+                        android:text="@string/button_cancel"
+                        android:textAllCaps="false"
+                        android:textColor="@color/activity_color_button"
+                        android:visibility="gone"/>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:orientation="horizontal"
-                    android:weightSum="1"
-                    android:gravity="center">
+                    android:weightSum="1">
 
                     <Button
                         android:id="@+id/btnChooseCustomer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:layout_marginTop="@dimen/margin_top_button_activity"
                         android:layout_marginBottom="@dimen/margin_bottom_button_activity"
+                        android:layout_marginTop="@dimen/margin_top_button_activity"
+                        android:layout_weight="0.5"
                         android:background="@drawable/selector_dialog_button"
                         android:minHeight="@dimen/selector_button_heigh"
                         android:text="@string/button_choose_customer"

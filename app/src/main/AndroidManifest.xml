@@ -53,6 +53,7 @@
         <activity android:name=".activity.WalletActivity" />
         <activity android:name=".activity.RewardActivity"
             android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activity.CheckPointActivity"/>
         <activity android:name=".activity.SettingsActivity"/>
         <activity android:name=".activity.BlockActivity"/>
         <activity android:name=".activity.ChatActivity"

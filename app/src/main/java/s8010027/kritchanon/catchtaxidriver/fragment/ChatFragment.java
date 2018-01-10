@@ -21,7 +21,7 @@ import s8010027.kritchanon.catchtaxidriver.R;
 public class ChatFragment extends Fragment {
 
     public interface FragmentListener {
-        void onButtonSignUpClick();
+        void onButtonHomeClick();
     }
 
     Toolbar toolbar;
@@ -110,7 +110,7 @@ public class ChatFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home){
             FragmentListener listener = (FragmentListener) getActivity();
-            listener.onButtonSignUpClick();
+            listener.onButtonHomeClick();
             return true;
         }
         return super.onOptionsItemSelected(item);

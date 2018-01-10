@@ -21,8 +21,7 @@ public class SignInFragment extends Fragment {
 
     ImageTextButtonView btnSignInWithDevice;
     ImageTextButtonView btnSignInWithGoogle;
-    Button btnSignInDevice;
-    Button btnSignInGoogle;
+    ImageTextButtonView btnSignInWithFacebook;
 
     public SignInFragment() {
         super();
@@ -63,6 +62,7 @@ public class SignInFragment extends Fragment {
 
         btnSignInWithDevice = (ImageTextButtonView) rootView.findViewById(R.id.btnSignInWithDevice);
         btnSignInWithGoogle = (ImageTextButtonView) rootView.findViewById(R.id.btnSignInWithGoogle);
+        btnSignInWithFacebook = (ImageTextButtonView) rootView.findViewById(R.id.btnSignInWithFacebook);
         setButtonSignIn();
 
     }
@@ -77,9 +77,14 @@ public class SignInFragment extends Fragment {
         btnSignInWithGoogle.setRelativeImageTextButton(R.drawable.sign_up_button);
         btnSignInWithGoogle.setIvImageTextButton(R.drawable.icon_google);
         btnSignInWithGoogle.setTvImageTextButton("Sign in with Google");
-
+        // set value btnSignInWithFacebook
+        btnSignInWithFacebook.setRelativeImageTextButton(R.drawable.sign_up_button);
+        btnSignInWithFacebook.setIvImageTextButton(R.drawable.icon_facebook);
+        btnSignInWithFacebook.setTvImageTextButton("Sign in with Facebook");
+        // set Button click
         btnSignInWithDevice.setOnClickListener(btnClick);
         btnSignInWithGoogle.setOnClickListener(btnClick);
+        btnSignInWithFacebook.setOnClickListener(btnClick);
     }
 
     @Override
@@ -121,6 +126,10 @@ public class SignInFragment extends Fragment {
                 listener.onButtonSignInClick();
             }
             if(btnSignInWithGoogle == view){
+                FragmentListener listener = (FragmentListener) getActivity();
+                listener.onButtonSignInClick();
+            }
+            if(btnSignInWithFacebook == view){
                 FragmentListener listener = (FragmentListener) getActivity();
                 listener.onButtonSignInClick();
             }
