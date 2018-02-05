@@ -17,7 +17,7 @@ public class CustomerData {
     String[] destination;
     String[] customer;
     String phone;
-    String[] rate;
+    int[] rateStar;
 
 
     private static CustomerData instance;
@@ -62,8 +62,8 @@ public class CustomerData {
         return phone;
     }
 
-    public String[] getRate() {
-        rate = new String[]{"5.0","4.5","4.5","3.5"};
-        return rate;
+    public int[] getRateStar(){
+        rateStar = new int[]{R.drawable.star_5,R.drawable.star_4_half,R.drawable.star_4_half,R.drawable.star_3_half};
+        return rateStar;
     }
 }

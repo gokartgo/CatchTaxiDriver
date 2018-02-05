@@ -69,6 +69,8 @@ public class EWalletFragment extends Fragment {
         customViewCashback.setTextTvMoney(sumMoney+".00");
         btnAccount = (Button) rootView.findViewById(R.id.btnAccount);
         btnAccount.setOnClickListener(btnClick);
+        btnHistory = (Button) rootView.findViewById(R.id.btnHistory);
+        btnHistory.setOnClickListener(btnClick);
     }
 
     @Override
@@ -106,7 +108,13 @@ public class EWalletFragment extends Fragment {
         public void onClick(View view) {
             if(view == btnAccount){
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.contentContainer,TransferFragment.newInstance(bundle),"TopUpFragment")
+                        .replace(R.id.contentContainer,TransferFragment.newInstance(bundle),"TransferFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
+            if(view == btnHistory){
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.contentContainer,TransactionHistoryFragment.newInstance(),"TransactionHistoryFragment")
                         .addToBackStack(null)
                         .commit();
             }

@@ -17,16 +17,6 @@
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:text="next"
-            android:minWidth="60dp"
-            android:textColor="@android:color/white"
-            android:background="@null"/>
 
     </RelativeLayout>
 
@@ -41,12 +31,25 @@
             android:orientation="vertical"
             android:padding="50dp">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_profile" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_your_profile"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="@string/please_enter_your_details_only_drivers_assigned_to_you_will_see_them" />
+                android:text="@string/please_enter_your_details_only_name_will_show_your_customer" />
 
 
             <android.support.design.widget.TextInputLayout
@@ -147,6 +150,20 @@
                 android:gravity="center"
                 android:text="By registering, I have read and agreed to the\nTerms of Use and the Privacy Policy"/>
 
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_dialog_button"
+                android:minHeight="@dimen/selector_button_heigh"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:text="@string/next"
+                android:textAllCaps="false"
+                android:textColor="@color/activity_color_button" />
 
         </LinearLayout>
     </ScrollView>

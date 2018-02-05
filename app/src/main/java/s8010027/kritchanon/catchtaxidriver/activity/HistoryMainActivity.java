@@ -6,23 +6,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import s8010027.kritchanon.catchtaxidriver.R;
-import s8010027.kritchanon.catchtaxidriver.fragment.ProfileFragment;
-import s8010027.kritchanon.catchtaxidriver.fragment.SettingsFragment;
+import s8010027.kritchanon.catchtaxidriver.fragment.HistoryFragment;
+import s8010027.kritchanon.catchtaxidriver.fragment.HistoryMainFragment;
 
-public class SettingsActivity extends AppCompatActivity implements  ProfileFragment.SaveFragmentListener{
+public class HistoryMainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_history);
 
         if(savedInstanceState == null){
+            //set fragment to activity
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.contentContainer, SettingsFragment.newInstance(),"SettingsFragment")
+                    .add(R.id.contentContainer, HistoryMainFragment.newInstance(),"HistoryMainFragment")
                     .commit();
         }
+
         initInstance();
     }
 
@@ -33,13 +35,7 @@ public class SettingsActivity extends AppCompatActivity implements  ProfileFragm
         // set up button
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.settings_actionbar);
-    }
-
-    // set action bar title from fragment
-
-    public void setActionBarTitle(int title){
-        getSupportActionBar().setTitle(title);
+        getSupportActionBar().setTitle(R.string.history_actionbar);
     }
 
     /*********
@@ -52,14 +48,5 @@ public class SettingsActivity extends AppCompatActivity implements  ProfileFragm
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /********
-     * fragment listener
-     */
-
-    @Override
-    public void onSaveItemClick() {
-        finish();
     }
 }

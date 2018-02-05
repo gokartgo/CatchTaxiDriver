@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="s8010027.kritchanon.catchtaxidriver.activity.HistoryActivity">
+    tools:context="s8010027.kritchanon.catchtaxidriver.activity.HistoryMainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

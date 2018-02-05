@@ -57,10 +57,12 @@ public class HistoryAdapter extends BaseAdapter {
             item = new HistoryView(parent.getContext());
         }
         item.setTextTvCustomerName(historyData.get(position).getTvCustomerName());
+        item.setTextTvDate(historyData.get(position).getTvDate());
+        item.setTextTvTime(historyData.get(position).getTvTime());
         item.setTextTvFrom(historyData.get(position).getTvFrom());
         item.setTextTvTo(historyData.get(position).getTvTo());
         item.setTextTvCustomerPay(historyData.get(position).getTvCustomerPay());
-        item.setTextTvCustomerRate(historyData.get(position).getTvCustomerRate());
+        item.setImageIvRateStar(historyData.get(position).getIvRateStar());
         return item;
     }
 }

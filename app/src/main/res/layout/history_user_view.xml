@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customer"
+        android:text="@string/customer"
         android:textSize="@dimen/text_subhead"
         android:textStyle="bold" />
 
@@ -16,13 +16,78 @@
         android:id="@+id/tvCustomerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/customername"
-        android:textSize="@dimen/text_subhead" />
+        android:textSize="@dimen/text_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/back_slash_n">
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&#160;&#160;"/>
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&#160;&#160;"/>
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/back_slash_n" />
+        android:layout_marginBottom="@dimen/back_slash_n"
+        android:layout_marginTop="@dimen/back_slash_n"
+        android:text="@string/from"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvFrom"
@@ -34,7 +99,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/back_slash_n" />
+        android:layout_marginBottom="@dimen/back_slash_n"
+        android:layout_marginTop="@dimen/back_slash_n"
+        android:text="@string/to"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvTo"
@@ -88,22 +157,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rate "
+                android:text="@string/rate"
                 android:textSize="@dimen/text_subhead"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvCustomerRate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5.0"
-                android:textSize="@dimen/text_subhead" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="/5.0"
-                android:textSize="@dimen/text_subhead" />
+            <ImageView
+                android:id="@+id/ivRateStar"
+                android:layout_width="80dp"
+                android:layout_height="16dp"
+                android:src="@drawable/star_5" />
 
         </LinearLayout>
     </RelativeLayout>

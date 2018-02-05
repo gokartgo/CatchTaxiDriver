@@ -18,7 +18,7 @@
         android:layout_margin="@dimen/margin_edit_text_view_transfer"
         android:background="@drawable/edittext_view_transfer"
         android:gravity="right"
-        android:hint="Enter an amount (THB)"
+        android:hint="@string/enter_an_amount_thb"
         android:inputType="number" />
 
     <RelativeLayout
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_button_cash_back"
             android:background="@drawable/button_transfer"
-            android:text="Ok"
+            android:text="@string/ok"
             android:layout_alignParentBottom="true"
             android:textAllCaps="false"
             android:textColor="@color/view_transfer_text_color"

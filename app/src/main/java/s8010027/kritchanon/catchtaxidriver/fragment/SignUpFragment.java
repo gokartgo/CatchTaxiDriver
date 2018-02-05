@@ -3,6 +3,9 @@ package s8010027.kritchanon.catchtaxidriver.fragment;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,9 +18,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.kbeanie.multipicker.api.ImagePicker;
+import com.kbeanie.multipicker.api.Picker;
+import com.kbeanie.multipicker.api.callbacks.ImagePickerCallback;
+import com.kbeanie.multipicker.api.entity.ChosenImage;
+
+import java.io.File;
+import java.util.List;
 
 import s8010027.kritchanon.catchtaxidriver.R;
 import s8010027.kritchanon.catchtaxidriver.manager.UserData;
@@ -29,6 +40,11 @@ public class SignUpFragment extends Fragment {
     public interface FragmentListener {
         void onButtonSignUpClick();
     }
+
+    private final int SELECTED_PICTURE = 0;
+    ImageView ivProfile;
+    ImagePicker imagePicker;
+    ImagePickerCallback imagePickerCallback;
 
     Toolbar toolbar;
     EditText edMobile;
@@ -89,6 +105,7 @@ public class SignUpFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
 
+        ivProfile = (ImageView) rootView.findViewById(R.id.ivProfile);
         edMobile = (EditText)rootView.findViewById(R.id.edMobile);
         edName = (EditText)rootView.findViewById(R.id.edName);
         edEmail = (EditText)rootView.findViewById(R.id.edEmail);
@@ -98,6 +115,7 @@ public class SignUpFragment extends Fragment {
         tvEmail = (TextView)rootView.findViewById(R.id.tvEmail);
         tvTaxiId = (TextView)rootView.findViewById(R.id.tvTaxiId);
         btnNext = (Button)rootView.findViewById(R.id.btnNext);
+        ivProfile.setOnClickListener(btnClick);
         btnNext.setOnClickListener(btnClick);
 
     }
@@ -151,6 +169,32 @@ public class SignUpFragment extends Fragment {
     final View.OnClickListener btnClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
+            if(view == ivProfile){
+                imagePicker = new ImagePicker(SignUpFragment.this);
+                imagePicker.setImagePickerCallback(new ImagePickerCallback() {
+                    @Override
+                    public void onImagesChosen(List<ChosenImage> list) {
+                        // get path and create file.
+                        String path = list.get(0).getOriginalPath();
+                        Uri uri = Uri.parse(path);
+                        File file = new File(path);
+                        // convert file to bitmap and set to imageView.
+                        if(file.exists()){
+                            Bitmap myBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                            ivProfile.setImageBitmap(myBitmap);
+                        }
+                    }
+
+                    @Override
+                    public void onError(String s) {
+                        // Do error handling
+                    }
+                });
+
+                imagePicker.pickImage();
+            }
+
             if(view == btnNext){
                 if(!edMobile.getText().toString().trim().equals("")){
                     tvMobile.setVisibility(View.INVISIBLE);

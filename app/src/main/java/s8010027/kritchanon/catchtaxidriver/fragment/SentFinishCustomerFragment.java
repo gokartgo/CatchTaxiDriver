@@ -248,9 +248,6 @@ public class SentFinishCustomerFragment extends Fragment implements OnMapReadyCa
                     dialogFinish.setCancelable(true);
                     dialogFinish.setCanceledOnTouchOutside(true);
                     dialogFinish.show();
-                    getFragmentManager().beginTransaction()
-                            .replace(R.id.contentContainer, MapsFragment.newInstance(-1), "MapsFragment")
-                            .commit();
                     // money from customer is minus card fees 25 baths
                     int money = Integer.parseInt(edMoney.getText().toString());
                     // sent value to mainactivity

@@ -64,9 +64,9 @@ public class RewardAllFragment extends Fragment{
         customViewPromotionAll1 = (RewardView) rootView.findViewById(R.id.customViewPromotionAll1);
         customViewPromotionAll2 = (RewardView) rootView.findViewById(R.id.customViewPromotionAll2);
         customViewPromotionAll3 = (RewardView) rootView.findViewById(R.id.customViewPromotionAll3);
-        customViewPromotionAll1.setImageIvPromotion(R.drawable.reward_taxi);
+        customViewPromotionAll1.setImageIvPromotion(R.drawable.reward_bonchon);
         customViewPromotionAll1.setTextTvPromotionName(R.string.promotion_name_1);
-        customViewPromotionAll1.setTextTvPromotionPoint("900");
+        customViewPromotionAll1.setTextTvPromotionPoint("1000");
         customViewPromotionAll2.setImageIvPromotion(R.drawable.reward_movie);
         customViewPromotionAll2.setTextTvPromotionName(R.string.promotion_name_2);
         customViewPromotionAll2.setTextTvPromotionPoint("1500");

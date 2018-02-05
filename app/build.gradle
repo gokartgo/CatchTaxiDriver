@@ -10,6 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true //important
     }
     buildTypes {
         release {
@@ -33,5 +34,7 @@ dependencies {
     compile 'com.romandanylyk:pageindicatorview:0.2.0@aar'
     compile 'com.wrapp.floatlabelededittext:library:0.0.6'
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.github.silvestrpredko:dot-progress-bar:1.1'
+    compile 'com.kbeanie:multipicker:1.1.31@aar'
     testCompile 'junit:junit:4.12'
 }

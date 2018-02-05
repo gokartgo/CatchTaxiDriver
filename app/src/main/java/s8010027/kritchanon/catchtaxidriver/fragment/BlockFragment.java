@@ -15,7 +15,7 @@ import s8010027.kritchanon.catchtaxidriver.view.BlockUserView;
 public class BlockFragment extends Fragment {
 
     BlockUserView blockUserView[];
-    String name[]={"Rose Cruz","Andres Horton","Felix Pierce"};
+    String name[]={"Rose ****","Andres ****","Felix ****"};
     int resource[]={R.id.blockUserView1,R.id.blockUserView2,R.id.blockUserView3};
 
     public BlockFragment() {

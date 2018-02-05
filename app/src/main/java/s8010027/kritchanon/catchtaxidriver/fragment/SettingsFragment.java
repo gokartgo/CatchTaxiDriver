@@ -9,16 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import s8010027.kritchanon.catchtaxidriver.R;
-import s8010027.kritchanon.catchtaxidriver.activity.SettingsActivity;
 
 
 @SuppressWarnings("unused")
 public class SettingsFragment extends Fragment {
 
-    Button btnProfile;
     Spinner spinnerCustomer;
 
     public SettingsFragment() {
@@ -57,8 +54,6 @@ public class SettingsFragment extends Fragment {
     @SuppressWarnings("UnusedParameters")
     private void initInstances(View rootView, Bundle savedInstanceState) {
         // Init 'View' instance(s) with rootView.findViewById here
-        btnProfile = (Button) rootView.findViewById(R.id.btnProfile);
-        btnProfile.setOnClickListener(btnClick);
         spinnerCustomer = (Spinner) rootView.findViewById(R.id.spinnerCustomer);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
@@ -72,8 +67,6 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        // call activity to set title action bar
-        ((SettingsActivity) getActivity()).setActionBarTitle(R.string.settings_actionbar);
     }
 
     @Override
@@ -98,18 +91,4 @@ public class SettingsFragment extends Fragment {
         // Restore Instance State here
     }
 
-    /***********
-     * Listener Zone
-     */
-    final View.OnClickListener btnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (view == btnProfile) {
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.contentContainer, ProfileFragment.newInstance(), "ProfileFragment")
-                        .addToBackStack(null)
-                        .commit();
-            }
-        }
-    };
 }

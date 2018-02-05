@@ -7,21 +7,34 @@ package s8010027.kritchanon.catchtaxidriver.manager;
 public class HistoryData {
 
     private String tvCustomerName;
+    private String tvDate;
+    private String tvTime;
     private String tvFrom;
     private String tvTo;
     private String tvCustomerPay;
     private String tvCustomerRate;
+    private int ivRateStar;
 
-    public HistoryData(String tvCustomerName,String tvFrom,String tvTo,String tvCustomerPay,String tvCustomerRate){
+    public HistoryData(String tvCustomerName,String tvDate,String tvTime,String tvFrom,String tvTo,String tvCustomerPay,int ivRateStar){
         this.tvCustomerName = tvCustomerName;
+        this.tvDate = tvDate;
+        this.tvTime = tvTime;
         this.tvFrom = tvFrom;
         this.tvTo = tvTo;
         this.tvCustomerPay = tvCustomerPay;
-        this.tvCustomerRate = tvCustomerRate;
+        this.ivRateStar = ivRateStar;
     }
 
     public String getTvCustomerName() {
         return tvCustomerName;
+    }
+
+    public String getTvDate(){
+        return tvDate;
+    }
+
+    public String getTvTime(){
+        return tvTime;
     }
 
     public String getTvFrom() {
@@ -36,7 +49,7 @@ public class HistoryData {
         return tvCustomerPay;
     }
 
-    public String getTvCustomerRate() {
-        return tvCustomerRate;
+    public int getIvRateStar(){
+        return ivRateStar;
     }
 }

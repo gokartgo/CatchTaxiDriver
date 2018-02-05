@@ -1,5 +1,8 @@
 package s8010027.kritchanon.catchtaxidriver.fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,11 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.kbeanie.multipicker.api.ImagePicker;
+import com.kbeanie.multipicker.api.Picker;
+import com.kbeanie.multipicker.api.callbacks.ImagePickerCallback;
+import com.kbeanie.multipicker.api.entity.ChosenImage;
+
+import java.io.File;
+import java.util.List;
 
 import s8010027.kritchanon.catchtaxidriver.R;
-import s8010027.kritchanon.catchtaxidriver.activity.SettingsActivity;
 import s8010027.kritchanon.catchtaxidriver.manager.UserData;
 
 
@@ -23,7 +33,12 @@ public class ProfileFragment extends Fragment {
         void onSaveItemClick();
     }
 
-    Button btnSave;
+    private final int SELECTED_PICTURE = 0;
+    ImageView ivProfile;
+    ImagePicker imagePicker;
+    ImagePickerCallback imagePickerCallback;
+
+    TextView tvNameProfile;
     EditText edMobile;
     EditText edName;
     EditText edEmail;
@@ -32,7 +47,7 @@ public class ProfileFragment extends Fragment {
     TextView tvName;
     TextView tvEmail;
     TextView tvTaxiId;
-
+    Button btnSave;
 
     public ProfileFragment() {
         super();
@@ -65,14 +80,13 @@ public class ProfileFragment extends Fragment {
 
     private void init(Bundle savedInstanceState) {
         // Init Fragment level's variable(s) here
-        // call activity to set title action bar
-        ((SettingsActivity) getActivity()).setActionBarTitle(R.string.profile_actionbar);
     }
 
     @SuppressWarnings("UnusedParameters")
     private void initInstances(View rootView, Bundle savedInstanceState) {
         // Init 'View' instance(s) with rootView.findViewById here
-        btnSave = (Button) rootView.findViewById(R.id.btnSave);
+        ivProfile = (ImageView) rootView.findViewById(R.id.ivProfile);
+        tvNameProfile = (TextView)rootView.findViewById(R.id.tvNameProfiile);
         edMobile = (EditText)rootView.findViewById(R.id.edMobile);
         edName = (EditText)rootView.findViewById(R.id.edName);
         edEmail = (EditText)rootView.findViewById(R.id.edEmail);
@@ -81,11 +95,16 @@ public class ProfileFragment extends Fragment {
         tvName = (TextView)rootView.findViewById(R.id.tvName);
         tvEmail = (TextView)rootView.findViewById(R.id.tvEmail);
         tvTaxiId = (TextView)rootView.findViewById(R.id.tvTaxiId);
+        btnSave = (Button) rootView.findViewById(R.id.btnSave);
         // set text from user data
+        if (!UserData.getInstance().getName().equals("")) {
+            tvNameProfile.setText(UserData.getInstance().getName());
+        }
         edMobile.setText(UserData.getInstance().getMobile());
-        edName.setText(UserData.getInstance().getMobile());
+        edName.setText(UserData.getInstance().getName());
         edEmail.setText(UserData.getInstance().getEmail());
         edTaxiId.setText(UserData.getInstance().getTaxiId());
+        ivProfile.setOnClickListener(btnClick);
         btnSave.setOnClickListener(btnClick);
     }
 
@@ -123,6 +142,32 @@ public class ProfileFragment extends Fragment {
     View.OnClickListener btnClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
+            if(view == ivProfile){
+                imagePicker = new ImagePicker(ProfileFragment.this);
+                imagePicker.setImagePickerCallback(new ImagePickerCallback() {
+                    @Override
+                    public void onImagesChosen(List<ChosenImage> list) {
+                        // get path and create file.
+                        String path = list.get(0).getOriginalPath();
+                        Uri uri = Uri.parse(path);
+                        File file = new File(path);
+                        // convert file to bitmap and set to imageView.
+                        if(file.exists()){
+                            Bitmap myBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                            ivProfile.setImageBitmap(myBitmap);
+                        }
+                    }
+
+                    @Override
+                    public void onError(String s) {
+                        // Do error handling
+                    }
+                });
+
+                imagePicker.pickImage();
+            }
+
             if(view == btnSave){
                 checkEditProfile();
                 if(!edMobile.getText().toString().trim().equals("") && !edName.getText().toString().trim().equals("") &&

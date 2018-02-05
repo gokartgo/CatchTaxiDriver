@@ -30,4 +30,13 @@
         <item name="android:windowMinWidthMinor">80%</item>
     </style>
 
+    <!-- set size and theme dialog -->
+    <style name="Theme_Dialog_Rate" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+
+
+
+
 </resources>

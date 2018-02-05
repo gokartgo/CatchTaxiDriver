@@ -250,7 +250,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
             }
         }
         else{
-            Toast.makeText(getContext(),"error lastlocation",Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),getString(R.string.open_location),Toast.LENGTH_SHORT).show();
         }
 
 
@@ -311,8 +311,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback
         chooseCustomerViews.setTextTvDestination(CustomerData.getInstance().getDestination()[index]);
         chooseCustomerViews.setTextTvCustomerName(CustomerData.getInstance().getCustomer()[index]);
         chooseCustomerViews.setTextTvPhone(CustomerData.getInstance().getPhone());
-        chooseCustomerViews.setTextTvCustomerRate(CustomerData.getInstance().getRate()[index]);
-
+        chooseCustomerViews.setImageIvRateStar(CustomerData.getInstance().getRateStar()[index]);
         // set button click choose customer
         btnChooseCustomer = (Button) dialog.findViewById(R.id.btnChooseCustomer);
         btnCancelCustomer = (Button) dialog.findViewById(R.id.btnCancelCustomer);

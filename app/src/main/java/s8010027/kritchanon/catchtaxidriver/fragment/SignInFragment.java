@@ -72,15 +72,15 @@ public class SignInFragment extends Fragment {
         btnSignInWithDevice.setRelativeImageTextButton(R.drawable.sign_in_button);
         btnSignInWithDevice.setColorTvImageTextButton(0xffffffff);
         btnSignInWithDevice.setIvImageTextButton(R.drawable.icon_mobile);
-        btnSignInWithDevice.setTvImageTextButton("Sign in with Device");
+        btnSignInWithDevice.setTvImageTextButton(getString(R.string.sign_in_device));
         // set value btnSignInWithGoogle
         btnSignInWithGoogle.setRelativeImageTextButton(R.drawable.sign_up_button);
         btnSignInWithGoogle.setIvImageTextButton(R.drawable.icon_google);
-        btnSignInWithGoogle.setTvImageTextButton("Sign in with Google");
+        btnSignInWithGoogle.setTvImageTextButton(getString(R.string.sign_in_google));
         // set value btnSignInWithFacebook
         btnSignInWithFacebook.setRelativeImageTextButton(R.drawable.sign_up_button);
         btnSignInWithFacebook.setIvImageTextButton(R.drawable.icon_facebook);
-        btnSignInWithFacebook.setTvImageTextButton("Sign in with Facebook");
+        btnSignInWithFacebook.setTvImageTextButton(getString(R.string.sign_in_facebook));
         // set Button click
         btnSignInWithDevice.setOnClickListener(btnClick);
         btnSignInWithGoogle.setOnClickListener(btnClick);

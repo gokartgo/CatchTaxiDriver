@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
@@ -16,7 +17,8 @@ import s8010027.kritchanon.catchtaxidriver.R;
 
 public class HistoryView extends BaseCustomViewGroup {
 
-    TextView tvCustomerName,tvFrom,tvTo,tvCustomerPay,tvCustomerRate;
+    TextView tvCustomerName,tvDate,tvTime,tvFrom,tvTo,tvCustomerPay;
+    ImageView ivRateStar;
 
     public HistoryView(Context context) {
         super(context);
@@ -53,10 +55,12 @@ public class HistoryView extends BaseCustomViewGroup {
     private void initInstances() {
         // findViewById here
         tvCustomerName = (TextView) findViewById(R.id.tvCustomerName);
+        tvDate = (TextView) findViewById(R.id.tvDate);
+        tvTime = (TextView) findViewById(R.id.tvTime);
         tvFrom = (TextView) findViewById(R.id.tvFrom);
         tvTo = (TextView) findViewById(R.id.tvTo);
         tvCustomerPay = (TextView) findViewById(R.id.tvCustomerPay);
-        tvCustomerRate = (TextView) findViewById(R.id.tvCustomerRate);
+        ivRateStar = (ImageView) findViewById(R.id.ivRateStar);
     }
 
     private void initWithAttrs(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -103,6 +107,14 @@ public class HistoryView extends BaseCustomViewGroup {
         tvCustomerName.setText(text);
     }
 
+    public void setTextTvDate(String text){
+        tvDate.setText(text);
+    }
+
+    public void setTextTvTime(String text){
+        tvTime.setText(text);
+    }
+
     public void setTextTvFrom(String text) {
         tvFrom.setText(text);
     }
@@ -115,8 +127,6 @@ public class HistoryView extends BaseCustomViewGroup {
         tvCustomerPay.setText(text);
     }
 
-    public void setTextTvCustomerRate(String text) {
-        tvCustomerRate.setText(text);
-    }
+    public void setImageIvRateStar(int resource){ ivRateStar.setImageResource(resource);}
 
 }

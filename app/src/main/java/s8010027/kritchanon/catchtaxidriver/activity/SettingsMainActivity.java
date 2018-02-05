@@ -6,24 +6,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import s8010027.kritchanon.catchtaxidriver.R;
-import s8010027.kritchanon.catchtaxidriver.fragment.HistoryFragment;
+import s8010027.kritchanon.catchtaxidriver.fragment.ProfileFragment;
+import s8010027.kritchanon.catchtaxidriver.fragment.SettingsFragment;
+import s8010027.kritchanon.catchtaxidriver.fragment.SettingsMainFragment;
 
-public class HistoryActivity extends AppCompatActivity {
+public class SettingsMainActivity extends AppCompatActivity implements  ProfileFragment.SaveFragmentListener{
 
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        setContentView(R.layout.activity_settings_main);
 
         if(savedInstanceState == null){
-            //set fragment to activity
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.contentContainer, HistoryFragment.newInstance(),"HistoryFragment")
+                    .add(R.id.contentContainer, SettingsMainFragment.newInstance(),"SettingsMainFragment")
                     .commit();
         }
-
         initInstance();
     }
 
@@ -34,7 +34,7 @@ public class HistoryActivity extends AppCompatActivity {
         // set up button
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.history_actionbar);
+        getSupportActionBar().setTitle(R.string.settings_actionbar);
     }
 
     /*********
@@ -47,5 +47,14 @@ public class HistoryActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /********
+     * fragment listener
+     */
+
+    @Override
+    public void onSaveItemClick() {
+        finish();
     }
 }

@@ -1,119 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/fragment_page_padding">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/ivProfile"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/profile_driver"/>
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_profile_button"
-            android:text="save"
-            android:textColor="@drawable/selector_text_profile_button"
-            android:minWidth="0dp"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:weightSum="12">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/edMobile"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/mobile"
-            android:inputType="numberDecimal"
-            android:maxLength="10"
-            android:maxLines="1" />
-        <TextView
-            android:id="@+id/tvMobile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/enter_your_mobile_number"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="@dimen/text_not_input_size"
-            android:visibility="invisible"/>
-    </android.support.design.widget.TextInputLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:weightSum="12">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_gravity="center"
+                android:src="@drawable/profile_driver" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/edName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/profile_name"
-            android:inputType="text" />
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter your name."
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="@dimen/text_not_input_size"
-            android:visibility="invisible"/>
-    </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:id="@+id/tvNameProfiile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/username_surname"
+                android:textColor="@color/drawer_menu_text_color"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"/>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:weightSum="12">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="16dp"
+                android:src="@drawable/star_4_half"
+                android:layout_gravity="center"/>
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/edEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/profile_email_address"
-            android:inputType="text" />
-        <TextView
-            android:id="@+id/tvEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/enter_your_email_address"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="@dimen/text_not_input_size"
-            android:visibility="invisible"/>
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:weightSum="12">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/mobile"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:maxLines="1" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/edTextId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/profile_taxi_id"
-            android:inputType="text" />
+                <TextView
+                    android:id="@+id/tvMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_your_mobile_number"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="@dimen/text_not_input_size"
+                    android:visibility="invisible" />
+            </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:id="@+id/tvTaxiId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter your Taxi ID."
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="@dimen/text_not_input_size"
-            android:visibility="invisible"/>
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/profile_name"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_your_name"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="@dimen/text_not_input_size"
+                    android:visibility="invisible" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/profile_email_address"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_your_email_address"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="@dimen/text_not_input_size"
+                    android:visibility="invisible" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edTextId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/profile_taxi_id"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/tvTaxiId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_your_taxi_id"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="@dimen/text_not_input_size"
+                    android:visibility="invisible" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/selector_dialog_button"
+                android:text="@string/save"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

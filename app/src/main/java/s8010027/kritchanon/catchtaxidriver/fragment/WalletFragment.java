@@ -48,6 +48,7 @@ public class WalletFragment extends Fragment {
         init(savedInstanceState);
 
         money = getArguments().getInt("money");
+        sumMoney = sumMoney+money;
 
         if (savedInstanceState != null)
             onRestoreInstanceState(savedInstanceState);
@@ -75,7 +76,6 @@ public class WalletFragment extends Fragment {
         walletViewCash = (WalletView) rootView.findViewById(R.id.walletViewCash);
         walletViewCash.setImageIvCatchPay(R.drawable.money);
         walletViewCash.setTextTvCash("E-Wallet");
-        sumMoney = sumMoney+money;
         walletViewCash.setTextTvMoney(sumMoney+".00");
         walletViewCredit.setOnClickListener(btnClick);
         walletViewCash.setOnClickListener(btnClick);

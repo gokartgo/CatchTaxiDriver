@@ -74,7 +74,7 @@ public class ChooseCustomerFragment extends Fragment {
             chooseCustomerViews[i].setTextTvDestination(CustomerData.getInstance().getDestination()[i]);
             chooseCustomerViews[i].setTextTvCustomerName(CustomerData.getInstance().getCustomer()[i]);
             chooseCustomerViews[i].setTextTvPhone(CustomerData.getInstance().getPhone());
-            chooseCustomerViews[i].setTextTvCustomerRate(CustomerData.getInstance().getRate()[i]);
+            chooseCustomerViews[i].setImageIvRateStar(CustomerData.getInstance().getRateStar()[i]);
             // set on click ChooseCustomerViews
             chooseCustomerViews[i].setOnClickListener(onClickListener);
         }

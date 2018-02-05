@@ -53,13 +53,15 @@ public class HistoryFragment extends Fragment {
 
     private void init(Bundle savedInstanceState) {
         // Init Fragment level's variable(s) here
-        String[] name = {"Rose Cruz","Andres Horton","Felix Pierce","Jesse Banks"};
+        String[] name = {"Rose ****","Andres ****","Felix ****","Jesse ****"};
+        String[] date = {"13 Sep 2017","26 Sep 2017","05 Dec 2017","07 Jan 2018"};
+        String[] time = {"08 : 27","12 : 35","07 : 45","19 : 33"};
         String[] from = getContext().getResources().getStringArray(R.array.From);
         String[] to = getContext().getResources().getStringArray(R.array.To);
         String[] pay = {"310","292","276","334"};
-        String[] rate = {"4.0","4.5","5.0","3.5"};
+        int[] rateStar = {R.drawable.star_4,R.drawable.star_4_half,R.drawable.star_5,R.drawable.star_3_half};
         for(int i=0;i<4;i++) {
-            historyData.add(new HistoryData(name[i], from[i], to[i], pay[i], rate[i]));
+            historyData.add(new HistoryData(name[i],date[i],time[i], from[i], to[i], pay[i],rateStar[i]));
         }
     }
 

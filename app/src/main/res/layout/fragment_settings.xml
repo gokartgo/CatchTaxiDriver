@@ -73,19 +73,4 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:gravity="left"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
-        android:padding="@dimen/settings_padding"
-        android:text="Profile Settings"
-        android:textAllCaps="false"
-        android:textColor="@color/settings_text_color"
-        android:textSize="@dimen/settings_text_size" />
-
-
 </LinearLayout>

@@ -27,6 +27,10 @@ public class TransferFragment extends Fragment {
     Dialog dialogFinish;
     Bundle bundle;
     int sumMoney;
+    // dialog confirm less than 25 bath
+    Dialog dialogConfirm;
+    Button btnDialogConfirm, btnDialogCancel;
+
 
     public TransferFragment() {
         super();
@@ -36,7 +40,7 @@ public class TransferFragment extends Fragment {
     public static TransferFragment newInstance(Bundle bundle) {
         TransferFragment fragment = new TransferFragment();
         Bundle args = new Bundle();
-        args.putBundle("bundle",bundle);
+        args.putBundle("bundle", bundle);
         fragment.setArguments(args);
         return fragment;
     }
@@ -77,7 +81,7 @@ public class TransferFragment extends Fragment {
         customViewTopUp.setImageIvTo(R.drawable.bank);
         customViewTopUp.setTextTvFrom("E-wallet");
         customViewTopUp.setTextTvTo("Banking");
-        customViewTopUp.setTextTvMoneyFrom(sumMoney+".00");
+        customViewTopUp.setTextTvMoneyFrom(sumMoney + ".00");
         customViewTopUp.setTextTvMoneyTo("123-456XXX-X");
 
         moneyFrom = Float.parseFloat(customViewTopUp.getTextTvMoneyFrom());
@@ -117,23 +121,33 @@ public class TransferFragment extends Fragment {
      * listener zone
      */
 
-    final View.OnClickListener btnClick = new View.OnClickListener(){
+    final View.OnClickListener btnClick = new View.OnClickListener() {
 
         @Override
         public void onClick(View view) {
-            if(view == btnOk){
-                if(edMoney.getText().toString().equals("")){
-                    Toast.makeText(getContext(),"Please Input Money",Toast.LENGTH_SHORT).show();
-                }
-                else {
+            if (view == btnOk) {
+                if (edMoney.getText().toString().equals("")) {
+                    Toast.makeText(getContext(), "Please Input Money", Toast.LENGTH_SHORT).show();
+                } else {
                     moneySent = Integer.parseInt(edMoney.getText().toString());
                     moneyFrom = moneyFrom - moneySent;
-                    if(moneyFrom<0){
-                        moneyFrom = moneyFrom+moneySent;
-                        Toast.makeText(getContext(),"Money you not enough",Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        customViewTopUp.setTextTvMoneyFrom(moneyFrom+"0");
+                    if (moneyFrom < 0) {
+                        moneyFrom = moneyFrom + moneySent;
+                        Toast.makeText(getContext(), "Money you not enough", Toast.LENGTH_SHORT).show();
+                    } else if (moneyFrom < 25) {
+                        moneyFrom = moneyFrom + moneySent;
+                        dialogConfirm = new Dialog(getContext(), R.style.Theme_Dialog);
+                        dialogConfirm.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        dialogConfirm.setContentView(R.layout.dialog_transfer_less_25);
+                        dialogConfirm.setCancelable(true);
+                        dialogConfirm.setCanceledOnTouchOutside(true);
+                        btnDialogConfirm = (Button) dialogConfirm.findViewById(R.id.btnDialogConfirm);
+                        btnDialogConfirm.setOnClickListener(btnDialogClick);
+                        btnDialogCancel = (Button) dialogConfirm.findViewById(R.id.btnDialogCancel);
+                        btnDialogCancel.setOnClickListener(btnDialogClick);
+                        dialogConfirm.show();
+                    } else {
+                        customViewTopUp.setTextTvMoneyFrom(moneyFrom + "0");
                         edMoney.setText("");
                         showDialogFinish();
                     }
@@ -150,4 +164,24 @@ public class TransferFragment extends Fragment {
         dialogFinish.setCanceledOnTouchOutside(true);
         dialogFinish.show();
     }
+
+    /*********
+     * dialog on click
+     */
+
+    final View.OnClickListener btnDialogClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if (view == btnDialogConfirm) {
+                moneyFrom = moneyFrom - moneySent;
+                customViewTopUp.setTextTvMoneyFrom(moneyFrom + "0");
+                edMoney.setText("");
+                dialogConfirm.cancel();
+                showDialogFinish();
+            }
+            if (view == btnDialogCancel) {
+                dialogConfirm.cancel();
+            }
+        }
+    };
 }

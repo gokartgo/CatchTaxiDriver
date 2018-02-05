@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
 import org.w3c.dom.Text;
 
 import s8010027.kritchanon.catchtaxidriver.R;
+import s8010027.kritchanon.catchtaxidriver.activity.CallCenterActivity;
+import s8010027.kritchanon.catchtaxidriver.activity.CallPhoneActivity;
 
 public class ChooseCustomerView extends BaseCustomViewGroup {
 
@@ -27,7 +30,7 @@ public class ChooseCustomerView extends BaseCustomViewGroup {
     TextView tvDestination;
     TextView tvCustomerName;
     TextView tvPhone;
-    TextView tvCustomerRate;
+    ImageView ivRateStar;
     LinearLayout linearLayoutCall;
 
     public ChooseCustomerView(Context context) {
@@ -70,7 +73,7 @@ public class ChooseCustomerView extends BaseCustomViewGroup {
         tvDestination = (TextView)findViewById(R.id.tvDestination);
         tvCustomerName = (TextView)findViewById(R.id.tvCustomerName);
         tvPhone = (TextView)findViewById(R.id.tvPhone);
-        tvCustomerRate = (TextView)findViewById(R.id.tvCustomerRate);
+        ivRateStar = (ImageView)findViewById(R.id.ivRateStar);
         linearLayoutCall = (LinearLayout)findViewById(R.id.linerLayoutCall);
         linearLayoutCall.setOnClickListener(layoutClick);
     }
@@ -134,12 +137,13 @@ public class ChooseCustomerView extends BaseCustomViewGroup {
     public String getTextTvCustomerName() {
         return tvCustomerName.getText().toString();
     }
+
     public void setTextTvPhone(String text) {
         tvPhone.setText(text);
     }
 
-    public void setTextTvCustomerRate(String text){
-        tvCustomerRate.setText(text);
+    public void setImageIvRateStar(int resource){
+        ivRateStar.setImageResource(resource);
     }
 
     /*********
@@ -150,8 +154,8 @@ public class ChooseCustomerView extends BaseCustomViewGroup {
         @Override
         public void onClick(View view) {
             if(view == linearLayoutCall){
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:012345****"));
+                Intent intent = new Intent(getContext(), CallPhoneActivity.class);
+                intent.putExtra("customer",0);
                 getContext().startActivity(intent);
             }
         }

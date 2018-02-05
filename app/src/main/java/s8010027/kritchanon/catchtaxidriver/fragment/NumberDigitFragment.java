@@ -17,7 +17,6 @@ public class NumberDigitFragment extends Fragment {
     public interface FragmentListener {
         void onButtonFinishClick();
     }
-
     Button btnFinish;
 
     public NumberDigitFragment() {

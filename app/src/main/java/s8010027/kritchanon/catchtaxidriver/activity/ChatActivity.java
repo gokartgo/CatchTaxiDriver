@@ -28,4 +28,11 @@ public class ChatActivity extends AppCompatActivity implements ChatFragment.Frag
     public void onButtonHomeClick() {
         finish();
     }
+
+    @Override
+    public void onCallClick() {
+        Intent intent = new Intent(ChatActivity.this,CallPhoneActivity.class);
+        intent.putExtra("customer",0);
+        startActivity(intent);
+    }
 }

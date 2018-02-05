@@ -43,14 +43,29 @@
                 </LinearLayout>
             </android.support.v7.widget.Toolbar>
 
-
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/switchCompat"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:layout_marginRight="4dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status_on_off"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switchCompat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </RelativeLayout>
 
 
@@ -65,6 +80,14 @@
 
             </FrameLayout>
 
+            <Button
+                android:id="@+id/btnCustomerCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="1dp"
+                android:minWidth="1dp"
+                android:visibility="gone" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,83 +97,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btnCall"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_button_activity"
-                        android:layout_weight="1"
-                        android:background="@drawable/selector_dialog_button"
-                        android:minHeight="@dimen/selector_button_heigh"
-                        android:text="@string/button_call"
-                        android:textAllCaps="false"
-                        android:textColor="@color/activity_color_button"
-                        android:visibility="gone" />
-
-                    <Button
-                        android:id="@+id/btnChat"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_button_activity"
-                        android:layout_weight="1"
-                        android:background="@drawable/selector_dialog_button"
-                        android:minHeight="@dimen/selector_button_heigh"
-                        android:text="@string/button_chat"
-                        android:textAllCaps="false"
-                        android:textColor="@color/activity_color_button"
-                        android:visibility="gone" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btnPickUp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_button_activity"
-                        android:layout_weight="1"
-                        android:background="@drawable/selector_dialog_button"
-                        android:minHeight="@dimen/selector_button_heigh"
-                        android:text="@string/button_pick_up"
-                        android:textAllCaps="false"
-                        android:textColor="@color/activity_color_button" />
-
-                    <Button
-                        android:id="@+id/btnFinish"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_button_activity"
-                        android:layout_weight="1"
-                        android:background="@drawable/selector_dialog_button"
-                        android:minHeight="@dimen/selector_button_heigh"
-                        android:text="@string/button_arrived"
-                        android:textAllCaps="false"
-                        android:textColor="@color/activity_color_button" />
-
-                    <Button
-                        android:id="@+id/btnCancel"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_button_activity"
-                        android:layout_weight="1"
-                        android:background="@drawable/selector_dialog_button"
-                        android:minHeight="@dimen/selector_button_heigh"
-                        android:text="@string/button_cancel"
-                        android:textAllCaps="false"
-                        android:textColor="@color/activity_color_button"
-                        android:visibility="gone"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_bottom_button_activity"
+                    android:layout_marginTop="@dimen/margin_top_button_activity"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:weightSum="1">
@@ -159,14 +107,71 @@
                         android:id="@+id/btnChooseCustomer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_bottom_button_activity"
-                        android:layout_marginTop="@dimen/margin_top_button_activity"
                         android:layout_weight="0.5"
                         android:background="@drawable/selector_dialog_button"
                         android:minHeight="@dimen/selector_button_heigh"
                         android:text="@string/button_choose_customer"
                         android:textAllCaps="false"
                         android:textColor="@color/activity_color_button" />
+
+                    <Button
+                        android:id="@+id/btnFinish"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_button_activity"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/selector_dialog_button"
+                        android:minHeight="@dimen/selector_button_heigh"
+                        android:text="@string/button_arrived"
+                        android:textAllCaps="false"
+                        android:textColor="@color/activity_color_button"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#80000000"
+                    android:orientation="horizontal">
+
+                    <s8010027.kritchanon.catchtaxidriver.view.ImageTextButtonChooseEventView
+                        android:id="@+id/btnCall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="gone" />
+
+                    <s8010027.kritchanon.catchtaxidriver.view.ImageTextButtonChooseEventView
+                        android:id="@+id/btnChat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#80000000"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <s8010027.kritchanon.catchtaxidriver.view.ImageTextButtonChooseEventView
+                        android:id="@+id/btnPickUp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="gone" />
+
+                    <s8010027.kritchanon.catchtaxidriver.view.ImageTextButtonChooseEventView
+                        android:id="@+id/btnCancel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="gone" />
+
+
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

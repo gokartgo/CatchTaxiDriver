@@ -157,18 +157,12 @@
             android:textSize="@dimen/text_subhead"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvCustomerRate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5.0"
-            android:textSize="@dimen/text_subhead" />
+        <ImageView
+            android:id="@+id/ivRateStar"
+            android:layout_width="80dp"
+            android:layout_height="16dp"
+            android:src="@drawable/star_5"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/5.0"
-            android:textSize="@dimen/text_subhead" />
 
     </LinearLayout>
 </LinearLayout>

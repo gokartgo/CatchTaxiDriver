@@ -22,6 +22,7 @@ public class ChatFragment extends Fragment {
 
     public interface FragmentListener {
         void onButtonHomeClick();
+        void onCallClick();
     }
 
     Toolbar toolbar;
@@ -124,9 +125,8 @@ public class ChatFragment extends Fragment {
         @Override
         public void onClick(View view) {
             if(view == btnCall){
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:012345****"));
-                startActivity(intent);
+                FragmentListener listener = (FragmentListener) getActivity();
+                listener.onCallClick();
             }
         }
     };

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
 
 import s8010027.kritchanon.catchtaxidriver.R;
 import s8010027.kritchanon.catchtaxidriver.manager.CustomerRewardData;
@@ -71,7 +70,7 @@ public class RewardOfMeFragment extends Fragment {
         myRewardPointView = (MyRewardPointView) rootView.findViewById(R.id.customViewMyRewardPointView);
         myRewardPointView.setTextTvPoint(CustomerRewardData.getInstance().getRewardPoint() + "");
         customViewPromotionMe1 = (RewardView) rootView.findViewById(R.id.customViewPromotionMe1);
-        customViewPromotionMe1.setImageIvPromotion(R.drawable.reward_taxi);
+        customViewPromotionMe1.setImageIvPromotion(R.drawable.reward_swensens);
         customViewPromotionMe1.setTextTvPromotionName(R.string.promotion_me_name_1);
         customViewPromotionMe1.setTextTvPromotionPoint("500");
         customViewPromotionMe1.getBtnPromotionPurchase().setOnClickListener(btnClick);
